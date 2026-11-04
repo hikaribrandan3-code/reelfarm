@@ -72,3 +72,7 @@ The default server serves the built site; any static host supporting directory i
 ## Verification
 
 `npm test` checks the complete video manifest, asset budgets, filters, duration formatting, translation parity, brief validation/encoding, selected references, and all 45 prerendered pages. Browser QA additionally covers mobile widths, desktop, search, style selection, package preselection, globe switching, validation, and playback.
+
+## Production credit and tools
+
+The header links to Montaj using its public brand mark from https://montaj.ag/montaj-logo.png. The footer's compact linked credit uses the owner-requested wording “Sponsored & Created with Montaj.ag”. The homepage production-tools section replaces the repeated delivery sample and describes the owner's paid studio workflow, current AI models, and human creative direction. Copy lives in `src/studio.js` in all three languages. Four FAQs show initially; the remaining questions are available through a native expandable control and remain in the rendered HTML and structured data.
