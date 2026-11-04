@@ -21,3 +21,8 @@ test('manual email brief validates contact details and includes complete context
  const link=emailLink('New quote\r\nSafe',body);assert.ok(link.startsWith(`mailto:${LEAD_EMAIL}?`));const parameters=new URLSearchParams(link.split('?')[1]);assert.equal(parameters.get('body'),body);assert.equal(parameters.get('subject'),'New quote  Safe');
 });
 test('all public pages are prerendered and language-specific',async()=>{for(const l of ['en','es','pt'])for(const r of ['/','/explore','/packages','/quote','/contact','/privacy',...videos.map(v=>`/explore/${v.slug}`)]){const html=await readFile(`dist${localPath(r,l)}${r==='/'?'':'/'}index.html`,'utf8');assert.match(html,/<h1/);assert.match(html,/application\/ld\+json/);assert.match(html,/meta name="description"/);assert.match(html,/ReelFarm/);assert.ok(!html.includes('Account'));assert.ok(!html.includes('undefined'));}});
+
+test('four scoped packages have consistent pricing, translations, and quote links',async()=>{
+ const {plans,planCopy}=await import('../src/plans.js');assert.deepEqual(plans.map(p=>[p.id,p.price,p.type]),[['Starter',50,'pack'],['Content',140,'pack'],['Growth',300,'monthly'],['Creator',null,'project']]);
+ for(const locale of ['en','es','pt']){const html=await readFile(`dist${localPath('/packages',locale)}/index.html`,'utf8');for(const p of plans){assert.ok(p[locale][2].length>=6);assert.ok(html.includes(`/quote?package=${p.id}`));if(p.price)assert.ok(html.replace(/<!--.*?-->/g,'').includes(`$${p.price}`));}assert.ok(html.includes(planCopy[locale].allowance));assert.ok(html.includes('Created with Montaj'));assert.ok(html.includes('apple-touch-icon'));assert.ok(!html.includes('2 videos per day'));}
+});

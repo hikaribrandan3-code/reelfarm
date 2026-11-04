@@ -21,6 +21,10 @@ npm start
 
 The server supports MP4 byte-range streaming, proper 404s, safe path resolution, and HEAD requests. There is no database, account infrastructure, or paid service dependency.
 
+## Packages
+
+Starter: $50 USD for 5 standard videos ($10 per standard video in this pack). Content: $140 USD for 12 standard videos. These are one-time packs. Growth: $300 USD monthly, with production volume agreed in the quote. Creator / Custom is priced per project. Premium 3D, advanced animation, extensive editing, and specialized projects are quoted separately. All four options prefill the existing quote form.
+
 ## Quotes and email
 
 The form deliberately uses **manual email handoff**, as requested. It validates the contact details, formats the complete brief, and opens the visitor's email app addressed to **hikaristudioai@gmail.com**. The visitor reviews and presses Send. It never claims the request was delivered. A copy button and selectable complete brief provide a fallback when no email app is available.

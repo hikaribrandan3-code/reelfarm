@@ -9,7 +9,7 @@ The website showcases real studio-supplied portfolio pieces and creative concept
 ## Pages
 - [Home](/): Services, portfolio, production process, and FAQs.
 - [Explore](/explore): Nine portfolio videos with durations, language metadata, descriptions, and creative categories.
-- [Packages](/packages): Content (5–7 videos per week), Growth (up to 2 videos per day), Creator (custom scope). Prices are quoted individually.
+- [Packages](/packages): Starter: $50 USD for 5 standard videos ($10 each in this pack). Content: $140 USD for 12 standard videos. Both are one-time packs. Growth: $300 USD monthly with production volume agreed in the quote. Creator / Custom: priced per project. Premium/custom work is quoted separately.
 - [Quote](/quote): Prepares a project brief in the visitor's email app. The visitor must send it manually.
 - [Contact](/contact): Contact options.
 - [Privacy](/privacy): Actual information handling and browser storage.
