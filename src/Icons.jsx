@@ -1,5 +1,6 @@
 import React from 'react';
 const paths = {
+  "volume-off": <><path d="m11 4-5 4H3v8h3l5 4Z"/><path d="m16 9 5 6m-5 0 5-6"/></>,
   heart: <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>,
   share: <><path d="m14 3 7 7-7 7v-5c-6 0-9 3-11 8 0-10 4-14 11-14Z"/></>,
   arrow: <><path d="M5 12h14M13 6l6 6-6 6"/></>,
