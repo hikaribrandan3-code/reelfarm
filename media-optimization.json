@@ -1,0 +1,56 @@
+[
+  {
+    "id": "acai-brasil",
+    "originalBytes": 18311461,
+    "webBytes": 8306730,
+    "savedPercent": 54.6
+  },
+  {
+    "id": "ai-for-business",
+    "originalBytes": 64029070,
+    "webBytes": 7718951,
+    "savedPercent": 87.9
+  },
+  {
+    "id": "exact-change",
+    "originalBytes": 17567641,
+    "webBytes": 4158773,
+    "savedPercent": 76.3
+  },
+  {
+    "id": "google-ranking",
+    "originalBytes": 14749643,
+    "webBytes": 2341448,
+    "savedPercent": 84.1
+  },
+  {
+    "id": "gringo-in-cordoba",
+    "originalBytes": 39884734,
+    "webBytes": 5913098,
+    "savedPercent": 85.2
+  },
+  {
+    "id": "influencer-from-hell",
+    "originalBytes": 20276909,
+    "webBytes": 3748322,
+    "savedPercent": 81.5
+  },
+  {
+    "id": "kung-pao-call",
+    "originalBytes": 23465184,
+    "webBytes": 4541103,
+    "savedPercent": 80.6
+  },
+  {
+    "id": "studio-edit",
+    "originalBytes": 9665341,
+    "webBytes": 3777784,
+    "savedPercent": 60.9
+  },
+  {
+    "id": "vendehumo",
+    "originalBytes": 31079587,
+    "webBytes": 5209337,
+    "savedPercent": 83.2
+  }
+]

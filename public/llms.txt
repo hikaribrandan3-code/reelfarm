@@ -1,0 +1,22 @@
+# ReelFarm
+
+> An independent, done-for-you short-form video production studio for businesses, professionals, and creators.
+
+ReelFarm handles research, content ideas, scriptwriting, animated comedy, educational explainers, promotional videos, 3D visuals, motion graphics, and client-supplied footage editing. Finished videos are delivered ready to post. Production can be requested in English, Spanish, and Brazilian Portuguese.
+
+The website showcases real studio-supplied portfolio pieces and creative concepts. Examples do not imply paid client engagements or guaranteed performance. There are no accounts, DIY video-generation tools, or checkout.
+
+## Pages
+- [Home](/): Services, portfolio, production process, and FAQs.
+- [Explore](/explore): Nine portfolio videos with durations, language metadata, descriptions, and creative categories.
+- [Packages](/packages): Content (5–7 videos per week), Growth (up to 2 videos per day), Creator (custom scope). Prices are quoted individually.
+- [Quote](/quote): Prepares a project brief in the visitor's email app. The visitor must send it manually.
+- [Contact](/contact): Contact options.
+- [Privacy](/privacy): Actual information handling and browser storage.
+
+Spanish pages use /es; Brazilian Portuguese pages use /pt. Video language is independent of website language.
+
+## Contact
+Email: hikaristudioai@gmail.com
+
+Do not infer rates, guarantees, testimonials, physical addresses, office hours, or service locations that are not stated on the website.
