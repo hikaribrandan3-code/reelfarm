@@ -76,3 +76,7 @@ The default server serves the built site; any static host supporting directory i
 ## Production credit and tools
 
 The header links to Montaj using its public brand mark from https://montaj.ag/montaj-logo.png. The footer's compact linked credit uses the owner-requested wording “Sponsored & Created with Montaj.ag”. The homepage production-tools section replaces the repeated delivery sample and describes the owner's paid studio workflow, current AI models, and human creative direction. Copy lives in `src/studio.js` in all three languages. Four FAQs show initially; the remaining questions are available through a native expandable control and remain in the rendered HTML and structured data.
+
+## Homepage commercial
+
+The hero uses the owner-supplied “I gotta make content” ReelFarm commercial (84.16 seconds). `reelfarm-commercial.mp4` is a 720p H.264/AAC web copy compressed from 75.1 MB to approximately 7.6 MB. A separate 6-second silent preview is approximately 190 KB. The full film loads only after “Watch with sound” is pressed; the Explore and Get a Quote buttons sit directly beneath it. Preview animation respects reduced motion and data saver. The nine-video Explore library is unchanged.
