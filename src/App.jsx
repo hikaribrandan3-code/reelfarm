@@ -18,7 +18,7 @@ function Link({to='/', children, ...props}) {
 function ButtonLink({to, children, secondary=false, className='', icon='arrow', ...props}) {
   return <Link to={to} className={`button ${secondary?'button-secondary':''} ${className}`} {...props}>{children}{icon && <Icon name={icon} size={18}/>}</Link>;
 }
-function Logo(){return <Link to="/" className="logo" aria-label="ReelFarm home"><Sprout size={33}/><span>ReelFarm<span className="logo-dot">®</span></span></Link>;}
+function Logo(){return <Link to="/" className="logo" aria-label="ReelFarm home"><img className="wordmark-icon" src="/brand/favicon.svg?v=play" width="33" height="33" alt=""/><span>ReelFarm<span className="logo-dot">®</span></span></Link>;}
 function Header(){
   const {t, locale, route, selected} = useSite();
   const [languages, setLanguages] = useState(false);
