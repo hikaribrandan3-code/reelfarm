@@ -117,3 +117,24 @@ html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(32px,6.8vw,78px)}
  .reel-hero-buttons{margin-top:14px}
 }
 @media(min-width:761px) and (max-width:1050px){.reel-hero{width:calc(100% - 56px);gap:35px;min-height:720px}.reel-hero-film{width:320px}.hero-services{font-size:12px}}
+
+.desktop-hero-conversion{display:none}
+@media(min-width:761px){
+ .reel-hero{grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:70px;min-height:0;padding-top:32px;padding-bottom:38px;align-items:center}
+ .pov-heading{align-self:center}
+ .reel-hero h1>.pov-setup{font-size:clamp(35px,4.5vw,64px);line-height:1.03}
+ .reel-hero h1>.pov-word-line{font-size:clamp(52px,5.8vw,82px);line-height:1.03}
+ .reel-hero h1 em{font-size:clamp(32px,3.9vw,54px);max-width:560px;line-height:1.04;margin-top:23px;text-wrap:balance}
+ .desktop-hero-conversion{display:block;margin-top:23px}
+ .desktop-hero-conversion>p{font-size:16px;line-height:1.55;max-width:510px;letter-spacing:-.02em}
+ .desktop-hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:25px}.desktop-hero-buttons>.button{min-height:50px;font-size:14px;padding-inline:23px}
+ .hero-services{margin-top:20px;font-size:13px;color:#72766d}
+ .reel-hero-content{position:relative;align-self:center;padding-bottom:0}
+ .reel-hero-film{height:clamp(430px,65vh,600px);width:auto;max-width:100%;aspect-ratio:9/16;box-shadow:0 8px 34px #15b21e18,0 0 50px #37e32816;border:1px solid #e7eee3}
+ .hero-film-cta,.reel-hero-content>.reel-hero-buttons,.hero-film-description>p{display:none}
+ .hero-film-description{position:absolute;bottom:17px;padding:0;z-index:3}.hero-film-description .reel-instagram{color:white;font-size:13px;text-shadow:0 1px 5px #0009}
+ .hero-feed-actions{bottom:62px}.reel-sound{background:#0003;border:1px solid #ffffff40}
+ .reel-paused-icon{width:62px;height:62px;border-width:2px}.reel-paused-icon svg{width:26px;height:26px}
+ html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(29px,3.5vw,49px)}
+}
+@media(min-width:761px) and (max-width:1050px){.reel-hero{gap:35px;grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr)}.desktop-hero-conversion>p{font-size:13px}.desktop-hero-buttons{gap:8px}.desktop-hero-buttons>.button{font-size:11px;padding-inline:15px}.hero-services{font-size:11px}.reel-hero h1 em{font-size:32px}}
