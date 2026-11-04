@@ -99,3 +99,21 @@ html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(32px,6.8vw,78px)}
 .reel-hero-film video{object-position:center}
 @media(max-width:1050px) and (min-width:761px){.reel-hero-film{width:320px}}
 @media(max-width:760px){.reel-hero-film{width:100%;max-width:440px;aspect-ratio:9/16;border-radius:23px}}
+
+/* Desktop keeps the original side-by-side hero; mobile retains the approved layout. */
+@media(min-width:761px){
+ .reel-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);width:min(1200px,calc(100% - 88px));gap:65px;align-items:center;min-height:780px;padding-top:42px;padding-bottom:55px}
+ .pov-heading{text-align:left;min-width:0}
+ .reel-hero h1{text-align:left;width:100%;margin:0}
+ .reel-hero h1>.pov-setup{font-size:clamp(34px,3.7vw,53px);white-space:normal;line-height:1.02}
+ .reel-hero h1>.pov-word-line{font-size:clamp(49px,5.2vw,74px);line-height:1.02}
+ .reel-hero h1 em{font-size:clamp(28px,3vw,42px);line-height:1.1;white-space:normal;text-wrap:balance;margin-top:18px;max-width:490px}
+ .hero-services{justify-content:flex-start;flex-wrap:wrap;font-size:14px;line-height:1.8;margin-top:22px}
+ .reel-hero-film{width:360px;max-width:100%;aspect-ratio:9/16;border-radius:27px}
+ .hero-film-cta{font-size:19px;min-height:48px;padding:10px 12px;left:7%;right:7%;bottom:20px;border-width:2px}
+ .hero-feed-actions{bottom:115px;right:13px}
+ .hero-film-description{max-width:380px;padding-top:13px}
+ .hero-film-description p{font-size:11px}
+ .reel-hero-buttons{margin-top:14px}
+}
+@media(min-width:761px) and (max-width:1050px){.reel-hero{width:calc(100% - 56px);gap:35px;min-height:720px}.reel-hero-film{width:320px}.hero-services{font-size:12px}}
