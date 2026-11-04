@@ -18,6 +18,9 @@ await esbuild.build({entryPoints:['src/App.jsx'],bundle:true,platform:'node',for
 const {default:App,faqCopy}=await import(pathToFileURL(resolve('.cache/ssr.mjs')).href+`?v=${Date.now()}`);
 await cp('public','dist',{recursive:true});
 await cp('motion/hyperframes','dist/motion/brand',{recursive:true,filter:source=>!source.includes('/.hyperframes')});
+// Vercel clean URLs remove index.html; keep embedded composition assets relative to its folder.
+const brandPage='dist/motion/brand/index.html';
+await writeFile(brandPage,(await readFile(brandPage,'utf8')).replace('<head>','<head><base href="/motion/brand/">'));
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const origin=process.env.SITE_URL?.replace(/\/$/,'')||'{{ORIGIN}}';
 const routeNames=['/','/explore','/packages','/quote','/contact','/privacy',...videos.map(v=>`/explore/${v.slug}`)];
