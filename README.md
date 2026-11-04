@@ -67,7 +67,7 @@ SITE_URL=https://your-real-domain.example npm run build
 
 This is an illustrative value; replace it with your actual domain. When SITE_URL is omitted, the included Node server fills the origin into HTML, robots, and sitemap responses using the current host. For static-only hosting, SITE_URL must be set at build time. Never publish `{{ORIGIN}}` placeholders to a static host.
 
-The default server serves the built site; any static host supporting directory indexes can serve `dist/` after the origin is configured. No hosting deployment was performed. Changes belong on `codex/reelfarm-premium`, not main.
+The default server serves the built site; any static host supporting directory indexes can serve `dist/` after the origin is configured. Vercel production deploys from `main` using `vercel.json`, Node 22, and the `dist/` output. SITE_URL is configured on Vercel as https://reelfarm-psi.vercel.app. The feature branch remains available for development.
 
 ## Verification
 
