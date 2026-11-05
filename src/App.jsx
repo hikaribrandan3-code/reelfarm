@@ -25,11 +25,33 @@ function Header(){
   const {t, locale, route, selected} = useSite();
   const [languages, setLanguages] = useState(false);
   const languageRef=useRef(null);
+  const [pastHero, setPastHero] = useState(false);
+  useEffect(() => {
+    if (route !== '/') return;
+    const categories = document.querySelector('.category-shortcuts');
+    const nav = document.querySelector('.mobile-nav');
+    if (!categories || !nav) return;
+    const update = () => {
+      const bottom = parseFloat(getComputedStyle(nav).bottom) || 0;
+      const navTop = window.innerHeight - nav.offsetHeight - bottom;
+      setPastHero(categories.getBoundingClientRect().bottom + 8 <= navTop);
+    };
+    update();
+    const observer = new IntersectionObserver(update);
+    observer.observe(categories);
+    window.addEventListener('scroll', update, {passive:true});
+    window.addEventListener('resize', update);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [route]);
   useEffect(()=>{const close=e=>{if(!languageRef.current?.contains(e.target))setLanguages(false);};document.addEventListener('pointerdown',close);return()=>document.removeEventListener('pointerdown',close);},[]);
   return <><a className="skip" href="#main">{t.skip}</a><header className="header"><div className="header-inner"><Logo/>
     <nav className="desktop-nav" aria-label="Main"><Link to="/explore" aria-current={route.startsWith('/explore')?'page':undefined}>{t.explore}</Link><Link to="/packages" aria-current={route==='/packages'?'page':undefined}>{t.packages}</Link><Link to="/contact" aria-current={route==='/contact'?'page':undefined}>{t.contact}</Link></nav>
     <div className="header-actions"><a className="montaj-nav-link" href="https://montaj.ag" target="_blank" rel="noopener noreferrer" aria-label={studioCopy[locale].nav} title="Montaj.ag"><img src="/brand/montaj-mark.png" width="24" height="24" alt=""/></a><div className="language-control" ref={languageRef}><button className="language-trigger" onClick={()=>setLanguages(!languages)} aria-expanded={languages} aria-label={`Language: ${locale.toUpperCase()}`}><Icon name="globe" size={19}/><span>{locale.toUpperCase()}</span></button>{languages && <div className="language-menu">{[['en','English'],['es','Español'],['pt','Português (BR)']].map(([code,name])=><a key={code} href={localPath(route,code)+(typeof window!=='undefined'?window.location.search:'')} hrefLang={code} lang={code} onClick={()=>setLanguages(false)} aria-current={locale===code?'true':undefined}>{name}{locale===code&&<Icon name="check" size={16}/>}</a>)}</div>}</div><ButtonLink to="/quote" className="header-quote">{t.quote}</ButtonLink><Link to="/contact" className="mobile-contact icon-button" aria-label={t.contact}><Icon name="chat"/></Link></div>
-  </div></header><nav className="mobile-nav" aria-label="Main">{[['/','home',t.home],['/explore','grid',t.explore],['/packages','layers',t.packages],['/quote','chat',t.quote]].map(([href,icon,label])=><Link key={href} to={href} className={(href==='/'?route==='/':route.startsWith(href))?'active':''} aria-current={(href==='/'?route==='/':route.startsWith(href))?'page':undefined}><span><Icon name={icon}/>{href==='/quote'&&selected.length>0&&<i>{selected.length}</i>}</span><small>{label}</small></Link>)}</nav></>;
+  </div></header><nav className={route === '/' && !pastHero ? 'mobile-nav mobile-nav-before-hero' : 'mobile-nav'} aria-label="Main">{[['/','home',t.home],['/explore','grid',t.explore],['/packages','layers',t.packages],['/quote','chat',t.quote]].map(([href,icon,label])=><Link key={href} to={href} className={(href==='/'?route==='/':route.startsWith(href))?'active':''} aria-current={(href==='/'?route==='/':route.startsWith(href))?'page':undefined}><span><Icon name={icon}/>{href==='/quote'&&selected.length>0&&<i>{selected.length}</i>}</span><small>{label}</small></Link>)}</nav></>;
 }
 function Footer(){const {t}=useSite();return <footer className="footer"><div className="footer-top"><div><Logo/><p>{t.footer}</p></div><Link to="/quote" className="footer-invite">{t.request}<Icon name="diagonal" size={30}/></Link></div><div className="footer-credit-row"><a className="montaj-footer-pill" href="https://montaj.ag" target="_blank" rel="noopener noreferrer"><img className="credit-montaj-mark" src="/brand/montaj-mark.png" width="20" height="20" alt="" loading="lazy"/><span className="credit-check"><Icon name="check" size={12}/></span><span>Sponsored &amp; Created with <strong>Montaj.ag</strong></span><Icon name="diagonal" size={12}/></a></div><div className="footer-bottom"><small>© {new Date().getFullYear()} ReelFarm. {t.footerNote}</small><div><Link to="/contact">{t.contact}</Link><Link to="/privacy">{t.privacy}</Link><a href={`mailto:${LEAD_EMAIL}`} aria-label={t.emailUs}><Icon name="mail" size={17}/></a></div></div></footer>;}
 

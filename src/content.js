@@ -1,11 +1,20 @@
-const video = (id, category, title, description, duration, language, tags, order) => ({
+const video = (id, category, title, description, duration, language, tags, order, industry = 'Restaurant / Food') => ({
   id, slug: id, category, title, description, duration, language, tags,
-  industry: 'Restaurant / Food', video: `/media/${id}.mp4`, poster: `/media/${id}.webp`,
+  industry, video: `/media/${id}.mp4`, poster: `/media/${id}.webp`,
   aspectRatio: '9:16', featured: order < 7, published: true, order,
 });
 
 // Portfolio pieces supplied by the studio. No engagement or client claims.
 export const videos = [
+  video('bellevue-irrigation', 'educational',
+    {en:'Bellevue irrigation, explained',es:'Riego en Bellevue, explicado',pt:'Irrigação em Bellevue, explicada'},
+    {en:'An educational construction and home-services video about irrigation, made for short-form feeds.',es:'Un video educativo de construcción y servicios para el hogar sobre riego, en formato vertical.',pt:'Um vídeo educativo de construção e serviços residenciais sobre irrigação, em formato vertical.'},61.5,'English',['Construction','Irrigation','Home services','Educational'], -3, 'Home Services'),
+  video('driveway-commercial', 'educational',
+    {en:'Driveways, built to last',es:'Entradas de vehículos hechas para durar',pt:'Entradas de garagem feitas para durar'},
+    {en:'A construction-focused commercial that turns driveway services into a clear visual story.',es:'Un comercial de construcción que presenta servicios de entradas de vehículos con una historia visual clara.',pt:'Um comercial de construção que apresenta serviços de entradas de garagem com uma narrativa visual clara.'},60.2,'English',['Construction','Driveway','Building','Promotion','Educational'], -2, 'Home Services'),
+  video('how-lego-bricks-are-made', 'educational',
+    {en:'How LEGO bricks are made',es:'Cómo se fabrican los bloques LEGO',pt:'Como os blocos LEGO são feitos'},
+    {en:'A building-style explainer exploring how LEGO bricks are made. Episode 01.',es:'Un explicativo de estilo construcción sobre cómo se fabrican los bloques LEGO. Episodio 01.',pt:'Um vídeo explicativo em estilo de construção sobre como os blocos LEGO são feitos. Episódio 01.'},71.567,'English',['Explainer','Building blocks','Manufacturing','Educational'], -1, 'Coaching / Education'),
   video('acai-brasil', 'visuals',
     { en: 'A little taste of Brasil', es: 'Un poquito de Brasil', pt: 'Um gostinho do Brasil' },
     { en: 'A sun-soaked clay-style world, built around food, discovery, and a little Brazilian energy. A MenuTree promotional concept.', es: 'Un mundo de estilo plastilina lleno de sol, comida y energía brasileña. Concepto promocional para MenuTree.', pt: 'Um universo com estilo de massinha, sol, comida e muita energia brasileira. Conceito promocional para MenuTree.' }, 70.9, 'Português', ['3D', 'Clay animation', 'Promotion', 'MenuTree', 'Brasil'], 0),
@@ -33,6 +42,14 @@ export const videos = [
   video('studio-edit', 'editing',
     { en: 'Ideas in motion', es: 'Ideas en movimiento', pt: 'Ideias em movimento' },
     { en: 'A studio-supplied vertical motion edit with typography and visual storytelling. Any dashboard figures inside the video are illustrative.', es: 'Una edición vertical del estudio con tipografía y narrativa visual. Las cifras del panel dentro del video son ilustrativas.', pt: 'Uma edição vertical do estúdio com tipografia e narrativa visual. Os números do painel dentro do vídeo são ilustrativos.' }, 60.024, 'English', ['Editing', 'Motion graphics', 'Short-form'], 8),
+  video('views-to-visits', 'educational',
+    { en: 'Views to visits', es: 'De vistas a visitas', pt: 'De visualizações a visitas' },
+    { en: 'A motion explainer on turning local attention into a clear reason to visit and an easy next step.', es: 'Un video animado sobre cómo dar al público local un motivo para visitar y facilitar el siguiente paso.', pt: 'Um vídeo animado sobre como dar ao público local um motivo para visitar e facilitar o próximo passo.' },
+    32.7, 'English', ['Motion graphics', 'Local marketing', 'Explainer'], 9),
+  video('content-treadmill', 'educational',
+    { en: 'The content treadmill', es: 'La rueda del contenido', pt: 'A esteira de conteúdo' },
+    { en: 'A paper collage explainer that turns one real customer question into three useful posts.', es: 'Un video animado con collage de papel que convierte una pregunta real de un cliente en tres publicaciones útiles.', pt: 'Um vídeo animado com colagem de papel que transforma uma pergunta real de cliente em três publicações úteis.' },
+    35.9, 'English', ['Motion graphics', 'Paper collage', 'Local marketing', 'Explainer'], 10),
 ].filter(v => v.published).sort((a, b) => a.order - b.order);
 
 export const categories = ['all', 'comedy', 'educational', 'editing', 'visuals', 'promotions', 'explainers'];

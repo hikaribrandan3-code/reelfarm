@@ -138,3 +138,10 @@ html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(32px,6.8vw,78px)}
  html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(29px,3.5vw,49px)}
 }
 @media(min-width:761px) and (max-width:1050px){.reel-hero{gap:35px;grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr)}.desktop-hero-conversion>p{font-size:13px}.desktop-hero-buttons{gap:8px}.desktop-hero-buttons>.button{font-size:11px;padding-inline:15px}.hero-services{font-size:11px}.reel-hero h1 em{font-size:32px}}
+
+@media (max-width:760px){
+  .reel-hero h1{font-family:system-ui,sans-serif;font-weight:900}
+  .reel-hero h1 .pov-content-word{font-weight:900;-webkit-text-stroke:.4px currentColor}
+  .mobile-nav{transition:opacity .25s ease,transform .25s ease,visibility .25s}
+  .mobile-nav-before-hero{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none}
+}
