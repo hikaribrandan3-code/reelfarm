@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T06:58:27.802Z",
+  "generated": "2026-11-09T07:22:38.547Z",
   "landingPages": {
     "roofing": {
       "path": "/demo/roofing",
@@ -57,8 +57,7 @@
         "sourceBytes": 404601747,
         "savedPercent": 91.1,
         "streams": "video,118.400000 audio,118.400000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/roof-build.webp"
+      }
     },
     {
       "id": "roof-storm-uplift",
@@ -361,6 +360,58 @@
         "savedPercent": 87.8,
         "streams": "video,70.200000 audio,70.300000"
       }
+    },
+    {
+      "id": "hdd-vs-ssd",
+      "title": "HDD vs SSD, explained",
+      "description": "A blueprint-style engineering explainer on how hard drives and solid-state drives store data, and why one is so much faster.",
+      "category": "educational",
+      "industry": "Technology",
+      "tags": [
+        "Engineering",
+        "Technology",
+        "Blueprint",
+        "Explainer",
+        "Educational"
+      ],
+      "localPath": "~/Downloads/hdd-vs-ssd-blueprint-v1 copy 2.MP4",
+      "duration": 82.2,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 31919588,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Downloads/hdd-vs-ssd-blueprint-v1 copy 2.MP4",
+        "alternates": [
+          {
+            "role": "byte-identical copy (motion-lab render)",
+            "path": "~/Documents/ChatGPT/menutap/motion-lab/hdd-vs-ssd-blueprint/renders/hdd-vs-ssd-blueprint-v1.mp4"
+          },
+          {
+            "role": "byte-identical copy",
+            "path": "~/Documents/ChatGPT/menutap/motion-lab/hdd-vs-ssd-blueprint/renders/hdd-vs-ssd-blueprint-v1 copy.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/hdd-vs-ssd.mp4",
+      "posterUrl": "/media/hdd-vs-ssd.webp",
+      "previewUrl": "/media/hdd-vs-ssd.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 6,
+      "order": -3.5,
+      "optimized": {
+        "file": "library/out/videos/hdd-vs-ssd.mp4",
+        "sizeBytes": 14137753,
+        "resolution": "1080x1920",
+        "duration": 82.2,
+        "sourceBytes": 31919588,
+        "savedPercent": 55.7,
+        "streams": "video,82.200000 audio,82.200000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/hdd-vs-ssd.webp"
     }
   ],
   "notPublished": [

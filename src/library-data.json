@@ -54,5 +54,13 @@
   "industry": "Masonry",
   "landing": null,
   "landingLabel": null
+ },
+ "hdd-vs-ssd": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/hdd-vs-ssd.mp4",
+  "duration": 82.2,
+  "aspectRatio": "9:16",
+  "industry": "Technology",
+  "landing": null,
+  "landingLabel": null
  }
 }

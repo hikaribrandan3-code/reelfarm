@@ -220,6 +220,37 @@
       "landingPage": null,
       "posterAt": 3,
       "order": -4
+    },
+    {
+      "id": "hdd-vs-ssd",
+      "category": "educational",
+      "industry": "Technology",
+      "title": "HDD vs SSD, explained",
+      "description": "A blueprint-style engineering explainer on how hard drives and solid-state drives store data, and why one is so much faster.",
+      "tags": [
+        "Engineering",
+        "Technology",
+        "Blueprint",
+        "Explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Downloads/hdd-vs-ssd-blueprint-v1 copy 2.MP4",
+      "webSource": "~/Downloads/hdd-vs-ssd-blueprint-v1 copy 2.MP4",
+      "alternates": [
+        {
+          "role": "byte-identical copy (motion-lab render)",
+          "path": "~/Documents/ChatGPT/menutap/motion-lab/hdd-vs-ssd-blueprint/renders/hdd-vs-ssd-blueprint-v1.mp4"
+        },
+        {
+          "role": "byte-identical copy",
+          "path": "~/Documents/ChatGPT/menutap/motion-lab/hdd-vs-ssd-blueprint/renders/hdd-vs-ssd-blueprint-v1 copy.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 6,
+      "order": -3.5
     }
   ],
   "notPublished": [
