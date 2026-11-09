@@ -34,6 +34,13 @@ for(const locale of locales){
   const dir=resolve('dist',path.slice(1));await mkdir(dir,{recursive:true});await writeFile(resolve(dir,'index.html'),html);
  }
 }
+// Standalone campaign landing pages (contractor-branded, English only, no ReelFarm chrome).
+import {campaigns} from '../src/demo.js';
+for(const [path,{config}] of Object.entries(campaigns)){
+  const body=renderToString(React.createElement(App,{initialPath:path}));const video=videos.find(v=>v.id===config.videoId);const abs=origin?origin+path:'';
+  const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#05090f"><title>${escape(config.seo.title)}</title><meta name="description" content="${escape(config.seo.description)}"><meta name="robots" content="noindex,nofollow"><meta property="og:type" content="website"><meta property="og:title" content="${escape(config.seo.title)}"><meta property="og:description" content="${escape(config.seo.description)}"><meta property="og:image" content="${origin?origin+video.poster:video.poster}">${abs?`<link rel="canonical" href="${abs}">`:''}<link rel="icon" type="image/svg+xml" href="/brand/favicon.svg?v=play"><link rel="preload" as="image" href="${video.poster}" fetchpriority="high"><link rel="preload" as="image" href="/demo/storm-640.webp" imagesrcset="/demo/storm-640.webp 640w, /demo/storm-1024.webp 1024w" imagesizes="100vw"><link rel="stylesheet" href="/${appCss.slice(5)}"></head><body><div id="root">${body}</div><script type="module" src="/${appJs.slice(5)}"></script></body></html>`;
+  const dir=resolve('dist',path.slice(1));await mkdir(dir,{recursive:true});await writeFile(resolve(dir,'index.html'),html);
+}
 // Unknown routes get a real 404 response from the included server.
 await writeFile('dist/404.html',`<!doctype html><html lang="en"><meta name="viewport" content="width=device-width"><meta name="robots" content="noindex"><title>Page not found | ReelFarm</title><link rel="stylesheet" href="/${appCss.slice(5)}"><body><main class="not-found wrap page"><h1>This page is between takes.</h1><a class="button" href="/explore">Explore videos</a></main></body></html>`);
 const urlBase=origin||'{{ORIGIN}}';

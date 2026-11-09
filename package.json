@@ -7,7 +7,9 @@
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "start": "node server/index.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "library:probe": "node scripts/library.mjs probe",
+    "library:optimize": "node scripts/library.mjs optimize"
   },
   "dependencies": {
     "@remotion/player": "4.0.540",

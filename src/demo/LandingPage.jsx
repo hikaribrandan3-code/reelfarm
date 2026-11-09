@@ -1,0 +1,131 @@
+import React, {useEffect, useRef, useState} from 'react';
+import {videos} from '../content.js';
+import {SERVICE_OPTIONS, validateLead} from './leadSchema.js';
+
+const paths = {
+  storm: <><path d="M7 16a4.5 4.5 0 1 1 1-8.9A5.5 5.5 0 0 1 18.6 9 3.8 3.8 0 0 1 18 16.5"/><path d="m12 11-2.5 4.5H13L11 20"/></>,
+  repair: <><path d="m14.7 6.3 3 3-8.4 8.4-3.7.7.7-3.7z"/><path d="m13 8 3 3M17 3.5l3.5 3.5-2 2-3.5-3.5z"/></>,
+  replace: <><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></>,
+  phone: <path d="M6.6 3.8 9 3.5l1.8 4.3-1.9 1.4a11 11 0 0 0 5.9 5.9l1.4-1.9 4.3 1.8-.3 2.4A2.7 2.7 0 0 1 17.6 20 15 15 0 0 1 4 6.4 2.7 2.7 0 0 1 6.6 3.8z"/>,
+  user: <><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></>,
+  mail: <><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></>,
+  pin: <><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></>,
+  home: <><path d="m3 11 9-7.5 9 7.5"/><path d="M5.5 9.500V20h13V9.500M10 20v-5h4v5"/></>,
+  shield: <><path d="M12 3 4.500 6v5.500c0 4.500 3 7.800 7.500 9.500 4.500-1.700 7.500-5 7.500-9.500V6z"/><path d="m8.800 12 2.400 2.400 4.200-4.600"/></>,
+  check: <path d="m5 12.500 4.500 4.500L19 7.500"/>,
+  arrow: <path d="M5 12h14m-5-6 6 6-6 6"/>,
+  send: <path d="M21 3 3 10.500l7 2.500 2.500 7zM10 13l5-4.500"/>,
+  chevron: <path d="m6 9 6 6 6-6"/>,
+  play: <path d="M8 5.500v13l11-6.500z" fill="currentColor"/>,
+};
+const Icon = ({name, size = 22}) => <svg className="rr-icon" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
+
+function Player({video, caption}) {
+  const ref = useRef(null);
+  const [started, setStarted] = useState(false);
+  const play = () => ref.current?.play().catch(() => {});
+  return <figure className="rr-player-wrap">
+    <div className="rr-player">
+      <video ref={ref} src={video.video} poster={video.poster} controls playsInline preload="none" width="1080" height="1920" aria-label={video.title.en} onPlay={() => setStarted(true)}>
+        Your browser can’t play this video. <a href={video.video}>Open the video</a>.
+      </video>
+      {!started && <button type="button" className="rr-play" onClick={play} aria-label="Play the roof storm damage video"><span><Icon name="play" size={30}/></span></button>}
+    </div>
+    <figcaption>{caption}</figcaption>
+  </figure>;
+}
+
+const empty = {name: '', phone: '', email: '', zip: '', service: '', message: '', website: ''};
+function EstimateForm({config}) {
+  const [values, setValues] = useState(empty);
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | unavailable | failed
+  const startedAt = useRef(0);
+  useEffect(() => { startedAt.current = Date.now(); }, []);
+  const set = key => e => { setValues(v => ({...v, [key]: e.target.value})); if (errors[key]) setErrors(er => ({...er, [key]: undefined})); };
+  async function submit(e) {
+    e.preventDefault();
+    if (status === 'sending') return;
+    const result = validateLead(values);
+    setErrors(result.errors);
+    if (!result.ok) { requestAnimationFrame(() => document.querySelector('.rr-field.has-error :is(input,select,textarea)')?.focus()); return; }
+    setStatus('sending');
+    try {
+      const response = await fetch('/api/lead', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...values, campaign: config.id, startedAt: startedAt.current})});
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.ok) { setStatus('sent'); return; }
+      if (response.status === 422 && data.errors) { setErrors(data.errors); setStatus('idle'); return; }
+      setStatus(data.error === 'not_configured' ? 'unavailable' : 'failed');
+    } catch { setStatus('failed'); }
+  }
+  if (status === 'sent') return <div className="rr-success" role="status" tabIndex={-1} ref={el => el?.focus()}>
+    <span className="rr-success-icon"><Icon name="check" size={30}/></span>
+    <h3>Request received</h3>
+    <p>Thanks, {values.name.split(' ')[0]}. {config.brand.name} has your details and will contact you at {values.phone} or {values.email}.</p>
+    <p className="rr-fine">This is a demo brand, so no real contractor will follow up.</p>
+  </div>;
+  const field = (key, label, input) => <div className={`rr-field ${key === 'message' ? 'rr-field-visible' : ''} ${errors[key] ? 'has-error' : ''}`}><label htmlFor={`rr-${key}`}>{label}</label>{input}{errors[key] && <p className="rr-error" id={`rr-${key}-error`} role="alert">{errors[key]}</p>}</div>;
+  const common = key => ({id: `rr-${key}`, name: key, value: values[key], onChange: set(key), 'aria-invalid': Boolean(errors[key]), 'aria-describedby': errors[key] ? `rr-${key}-error` : undefined});
+  return <form className="rr-form" onSubmit={submit} noValidate aria-busy={status === 'sending'}>
+    <div className="rr-row">
+      {field('name', 'Full name', <div className="rr-input"><Icon name="user" size={19}/><input {...common('name')} autoComplete="name" placeholder="Full Name" maxLength={100} required/></div>)}
+      {field('phone', 'Phone number', <div className="rr-input"><Icon name="phone" size={19}/><input {...common('phone')} type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone Number" maxLength={20} required/></div>)}
+    </div>
+    {field('email', 'Email address', <div className="rr-input"><Icon name="mail" size={19}/><input {...common('email')} type="email" inputMode="email" autoComplete="email" placeholder="Email Address" maxLength={254} required/></div>)}
+    <div className="rr-row">
+      {field('zip', 'ZIP code', <div className="rr-input"><Icon name="pin" size={19}/><input {...common('zip')} inputMode="numeric" autoComplete="postal-code" placeholder="ZIP Code" maxLength={5} pattern="[0-9]*" required/></div>)}
+      {field('service', 'Service needed', <div className="rr-input"><Icon name="home" size={19}/><select {...common('service')} required><option value="">Service Needed</option>{SERVICE_OPTIONS.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select><Icon name="chevron" size={18}/></div>)}
+    </div>
+    {field('message', <>Project description <span>(optional)</span></>, <div className="rr-input rr-textarea"><textarea {...common('message')} rows={3} maxLength={1000} placeholder="What are you seeing on your roof?"/></div>)}
+    <div className="rr-trap" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={set('website')}/></label></div>
+    {status === 'unavailable' && <p className="rr-alert" role="alert">This demo form isn’t connected to a live inbox yet, so your request was <strong>not</strong> sent. Please call {config.brand.phoneDisplay} instead.</p>}
+    {status === 'failed' && <p className="rr-alert" role="alert">We couldn’t send your request. Nothing was submitted. Check your connection and try again.</p>}
+    <button type="submit" className="rr-button rr-submit" disabled={status === 'sending'}>{status === 'sending' ? <><span className="rr-spinner" aria-hidden="true"/>Sending…</> : <><Icon name="send" size={20}/>Request My Free Estimate<Icon name="arrow" size={20}/></>}</button>
+    <ul className="rr-assure">{config.assurances.map(a => <li key={a}><Icon name="check" size={16}/>{a}</li>)}</ul>
+  </form>;
+}
+
+export default function LandingPage({config}) {
+  const video = videos.find(v => v.id === config.videoId);
+  const {brand, hero} = config;
+  const [stuck, setStuck] = useState(false);
+  useEffect(() => {
+    const form = document.getElementById('estimate'), top = document.querySelector('.rr-hero');
+    if (!form || !top || !('IntersectionObserver' in window)) return;
+    const state = {hero: true, form: false};
+    const observer = new IntersectionObserver(entries => { for (const e of entries) state[e.target === form ? 'form' : 'hero'] = e.isIntersecting; setStuck(!state.hero && !state.form); }, {threshold: 0.15});
+    observer.observe(form); observer.observe(top);
+    return () => observer.disconnect();
+  }, []);
+  return <div className="rr-page">
+    <picture className="rr-bg" aria-hidden="true"><img src="/demo/storm-1024.webp" srcSet="/demo/storm-640.webp 640w, /demo/storm-1024.webp 1024w" sizes="100vw" width="1024" height="1536" alt="" decoding="async"/></picture>
+    <div className="rr-scrim" aria-hidden="true"/>
+    <a className="rr-skip" href="#estimate">Skip to estimate form</a>
+    <header className="rr-header"><div className="rr-header-inner">
+      <a className="rr-brand" href="#top" aria-label={`${brand.name} home`}><span className="rr-mark">{brand.monogram}</span><span><strong>{brand.name}</strong><small>{brand.demo ? 'Demo · Roofing' : brand.tagline}</small></span></a>
+      <nav className="rr-nav" aria-label="Page"><a href="#services">Services</a><a href="#how">How it works</a><a href="#estimate">Free estimate</a></nav>
+      <a className="rr-call" href={brand.phoneHref}><Icon name="phone" size={19}/>Call Now</a>
+    </div></header>
+    <main id="top">
+      <section className="rr-hero rr-wrap">
+        <Player video={video} caption={config.videoCaption}/>
+        <div className="rr-hero-copy">
+          <h1>{hero.lead}<br/><em>{hero.accent}</em></h1>
+          <p>{hero.copy}</p>
+          <a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a>
+        </div>
+      </section>
+      <section className="rr-services rr-wrap" id="services" aria-label="Services"><ul>{config.services.map(s => <li key={s.title}><Icon name={s.icon} size={34}/><h2>{s.title}</h2><p>{s.text}</p></li>)}</ul></section>
+      <section className="rr-estimate rr-wrap" id="estimate" aria-labelledby="estimate-title">
+        <div className="rr-card"><h2 id="estimate-title">Get a Free Roof Estimate</h2><p className="rr-sub">Tell us about your project and we’ll be in touch soon.</p><EstimateForm config={config}/></div>
+      </section>
+      <section className="rr-how rr-wrap" id="how" aria-labelledby="how-title">
+        <h2 id="how-title">What happens after you reach out</h2>
+        <ol>{config.steps.map((s, i) => <li key={s.title}><span>{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>)}</ol>
+      </section>
+      <section className="rr-final rr-wrap" aria-labelledby="final-title"><h2 id="final-title">Worried about your roof after the storm?</h2><p>Get a free estimate and find out what it needs.</p><a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a></section>
+    </main>
+    <footer className="rr-footer rr-wrap"><p>{config.demoNotice}</p><p>Demo experience produced by <a href="/">ReelFarm</a></p></footer>
+    <a className={`rr-sticky ${stuck ? 'is-visible' : ''}`} href="#estimate" tabIndex={stuck ? 0 : -1} aria-hidden={!stuck}>{hero.cta}<Icon name="arrow" size={19}/></a>
+  </div>;
+}

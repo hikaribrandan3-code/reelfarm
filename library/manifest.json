@@ -1,0 +1,358 @@
+{
+  "generated": "2026-11-09T05:58:32.547Z",
+  "landingPages": {
+    "roofing": {
+      "path": "/demo/roofing",
+      "label": "Live Roofing Demo",
+      "industry": "Roofing"
+    }
+  },
+  "entries": [
+    {
+      "id": "roof-storm-uplift",
+      "title": "Why roofs get ripped off in storms",
+      "description": "A 3D engineering explainer on wind uplift, where roofs fail, and how correct nailing, flashing and inspection protect a home.",
+      "category": "educational",
+      "industry": "Roofing",
+      "tags": [
+        "Engineering",
+        "Roofing",
+        "Storm damage",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2.mp4",
+      "duration": 78.3,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 184920505,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4",
+        "alternates": [
+          {
+            "role": "social-loudness-copy (-14 LUFS, 96 kHz AAC); used as web source",
+            "path": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-storm-uplift.mp4",
+      "posterUrl": "/media/roof-storm-uplift.webp",
+      "previewUrl": "/media/roof-storm-uplift.preview.mp4",
+      "landingPage": "/demo/roofing",
+      "landingLabel": "Live Roofing Demo",
+      "posterAt": 3.2,
+      "order": -9,
+      "optimized": {
+        "file": "library/out/videos/roof-storm-uplift.mp4",
+        "sizeBytes": 29004492,
+        "resolution": "1080x1920",
+        "duration": 78.3,
+        "sourceBytes": 184914351,
+        "savedPercent": 84.3,
+        "streams": "video,78.300000 audio,78.300000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/roof-storm-uplift.webp"
+    },
+    {
+      "id": "privacy-fence",
+      "title": "How a privacy fence stays standing",
+      "description": "A 3D engineering explainer on posts, footings, rails and wind load: what holds a privacy fence up and why fences lean.",
+      "category": "educational",
+      "industry": "Home Services",
+      "tags": [
+        "Engineering",
+        "Fence",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-FINAL.mp4",
+      "duration": 50.9,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 163112079,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-FINAL.mp4",
+        "alternates": [
+          {
+            "role": "earlier take (v1), superseded",
+            "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v1.mp4"
+          },
+          {
+            "role": "unmastered render (v2-raw), superseded by FINAL",
+            "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v2-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/privacy-fence.mp4",
+      "posterUrl": "/media/privacy-fence.webp",
+      "previewUrl": "/media/privacy-fence.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 2.5,
+      "order": -8,
+      "optimized": {
+        "file": "library/out/videos/privacy-fence.mp4",
+        "sizeBytes": 17199787,
+        "resolution": "1080x1920",
+        "duration": 50.9,
+        "sourceBytes": 163112079,
+        "savedPercent": 89.5,
+        "streams": "video,50.900000 audio,50.900000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/privacy-fence.webp"
+    },
+    {
+      "id": "solar-home",
+      "title": "How home solar actually works",
+      "description": "A 3D engineering explainer following sunlight from panel to inverter to your home's electrical system.",
+      "category": "educational",
+      "industry": "Solar",
+      "tags": [
+        "Engineering",
+        "Solar",
+        "Energy",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/eng03-solar-home/renders/eng03-solar-home-v1.mp4",
+      "duration": 64,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 139641982,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/eng03-solar-home/renders/eng03-solar-home-v1.mp4",
+        "alternates": [
+          {
+            "role": "duplicate copy in Downloads (byte-identical name)",
+            "path": "~/Downloads/eng03-solar-home-v1.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/solar-home.mp4",
+      "posterUrl": "/media/solar-home.webp",
+      "previewUrl": "/media/solar-home.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 3,
+      "order": -7,
+      "optimized": {
+        "file": "library/out/videos/solar-home.mp4",
+        "sizeBytes": 22884965,
+        "resolution": "1080x1920",
+        "duration": 64,
+        "sourceBytes": 139641982,
+        "savedPercent": 83.6,
+        "streams": "video,64.000000 audio,64.000000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/solar-home.webp"
+    },
+    {
+      "id": "ac-not-cooling",
+      "title": "Why your AC isn't cooling",
+      "description": "An engineering explainer on how an air conditioner moves heat, and the common faults that stop it cooling.",
+      "category": "educational",
+      "industry": "HVAC",
+      "tags": [
+        "Engineering",
+        "HVAC",
+        "Air conditioning",
+        "Explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/eng04-ac-not-cooling/renders/eng04-ac-not-cooling.mp4",
+      "duration": 64.13,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 49236043,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/eng04-ac-not-cooling/renders/eng04-ac-not-cooling.mp4",
+        "alternates": []
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/ac-not-cooling.mp4",
+      "posterUrl": "/media/ac-not-cooling.webp",
+      "previewUrl": "/media/ac-not-cooling.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 3,
+      "order": -6,
+      "optimized": {
+        "file": "library/out/videos/ac-not-cooling.mp4",
+        "sizeBytes": 11138260,
+        "resolution": "1080x1920",
+        "duration": 64.13,
+        "sourceBytes": 49236043,
+        "savedPercent": 77.4,
+        "streams": "video,64.133333 audio,64.133333"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/ac-not-cooling.webp"
+    },
+    {
+      "id": "pool-build",
+      "title": "How a swimming pool is built",
+      "description": "A 3D build-process explainer: excavation, steel, plumbing, shell and finish, step by step.",
+      "category": "educational",
+      "industry": "Swimming Pools",
+      "tags": [
+        "Engineering",
+        "Swimming pool",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio.mp4",
+      "duration": 70.8,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 89725388,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio.mp4",
+        "alternates": [
+          {
+            "role": "unmastered render with same tail (raw)",
+            "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio-raw.mp4"
+          },
+          {
+            "role": "engineering cut without ReelFarm tail",
+            "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-eng.mp4"
+          },
+          {
+            "role": "tail clip only",
+            "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-tail-reelfarm-studio.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/pool-build.mp4",
+      "posterUrl": "/media/pool-build.webp",
+      "previewUrl": "/media/pool-build.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 3,
+      "order": -5,
+      "optimized": {
+        "file": "library/out/videos/pool-build.mp4",
+        "sizeBytes": 19828525,
+        "resolution": "1080x1920",
+        "duration": 70.8,
+        "sourceBytes": 89725388,
+        "savedPercent": 77.9,
+        "streams": "video,70.766667 audio,70.800000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/pool-build.webp"
+    },
+    {
+      "id": "brick-wall",
+      "title": "How a brick wall is built to last",
+      "description": "A 3D build-process explainer on footings, mortar, ties and bond patterns in a load-bearing brick wall.",
+      "category": "educational",
+      "industry": "Masonry",
+      "tags": [
+        "Engineering",
+        "Masonry",
+        "Brick wall",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio.mp4",
+      "duration": 70.3,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 236518942,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio.mp4",
+        "alternates": [
+          {
+            "role": "unmastered render with same tail (raw)",
+            "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio-raw.mp4"
+          },
+          {
+            "role": "engineering cut without ReelFarm tail",
+            "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-eng.mp4"
+          },
+          {
+            "role": "tail clip only",
+            "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-tail-reelfarm-studio.mp4"
+          },
+          {
+            "role": "duplicate copy in Downloads",
+            "path": "~/Downloads/brick-wall-reelfarm-studio.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/brick-wall.mp4",
+      "posterUrl": "/media/brick-wall.webp",
+      "previewUrl": "/media/brick-wall.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 3,
+      "order": -4,
+      "optimized": {
+        "file": "library/out/videos/brick-wall.mp4",
+        "sizeBytes": 28855489,
+        "resolution": "1080x1920",
+        "duration": 70.3,
+        "sourceBytes": 236518942,
+        "savedPercent": 87.8,
+        "streams": "video,70.200000 audio,70.300000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/brick-wall.webp"
+    }
+  ],
+  "notPublished": [
+    {
+      "id": "roof-build",
+      "status": "in-progress",
+      "reason": "Newest roofing film. 09_qa not done, render.lock present and a render job running; take1 archive is an earlier compressed take. Not touched.",
+      "path": "~/Documents/reelsfarmagency/productions/roof-build"
+    },
+    {
+      "id": "zz-engine-selftest",
+      "status": "test",
+      "reason": "Engine self-test renders (demo-northwind/bluewave/summit-peak), not portfolio films.",
+      "path": "~/Documents/reelsfarmagency/productions/zz-engine-selftest"
+    },
+    {
+      "id": "zz-v2-jobtest",
+      "status": "test",
+      "reason": "Engine v2 job test and archived takes, not portfolio films.",
+      "path": "~/Documents/reelsfarmagency/productions/zz-v2-jobtest"
+    },
+    {
+      "id": "draft-and-scratch",
+      "status": "draft",
+      "reason": "snaps/draft.mp4 and out/_v.mp4 in each production are previews/QA scratch.",
+      "path": "~/Documents/reelsfarmagency/productions/*/{snaps,out}"
+    },
+    {
+      "id": "bellevue-irrigation-v2/test",
+      "status": "alternate",
+      "reason": "Earlier/alternate Bellevue irrigation renders; the published version is already on the site.",
+      "path": "~/Documents/ChatGPT/reelfarm-bellevue/renders"
+    },
+    {
+      "id": "lego-episode-01",
+      "status": "published",
+      "reason": "Already on the site as how-lego-bricks-are-made.",
+      "path": "~/Documents/ChatGPT/menutap/motion-lab/lego-episode-01/renders/how-lego-bricks-are-made-ep01.mp4"
+    }
+  ]
+}

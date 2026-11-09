@@ -9,6 +9,7 @@ const port=Number(process.env.PORT||4173);
 const server=createServer(async(req,res)=>{
  const headers={'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','X-Frame-Options':'SAMEORIGIN','Permissions-Policy':'camera=(), microphone=(), geolocation=()'};
  for(const [key,value]of Object.entries(headers))res.setHeader(key,value);
+ if(req.url.split('?')[0]==='/api/lead'){const {default:handler}=await import('../api/lead.js');return handler(req,res);}
  if(!['GET','HEAD'].includes(req.method)){res.writeHead(405,{'Allow':'GET, HEAD'});return res.end();}
  let path;try{path=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);return res.end();}
  let file=resolve(root,'.'+path);if(file!==root&&!file.startsWith(root+sep)){res.writeHead(403);return res.end();}

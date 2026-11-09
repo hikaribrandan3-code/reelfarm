@@ -1,11 +1,44 @@
+import library from './library-data.json' with {type: 'json'};
+
 const video = (id, category, title, description, duration, language, tags, order, industry = 'Restaurant / Food') => ({
   id, slug: id, category, title, description, duration, language, tags,
   industry, video: `/media/${id}.mp4`, poster: `/media/${id}.webp`,
   aspectRatio: '9:16', featured: order < 7, published: true, order,
 });
+// Engineering explainers: full-length MP4s live in Vercel Blob (see library/manifest.json), not in the deploy.
+// `landing` (from the manifest) is the optional demo landing page for the video; only videos with one show demo CTAs.
+const engineering = (id, title, description, tags, order, trade) => {
+  const entry = library[id];
+  return {...video(id, 'educational', title, description, entry.duration, 'English', ['Engineering', 'Explainer', ...tags, 'Educational'], order, 'Home Services'),
+    video: entry.video, trade, landing: entry.landing ? {path: entry.landing, label: entry.landingLabel} : null};
+};
 
 // Portfolio pieces supplied by the studio. No engagement or client claims.
 export const videos = [
+  engineering('roof-storm-uplift',
+    {en:'Why roofs get ripped off in storms',es:'Por qué las tormentas arrancan los techos',pt:'Por que as tempestades arrancam telhados'},
+    {en:'A 3D engineering explainer on wind uplift, where roofs fail, and how correct nailing, flashing and inspection protect a home.',es:'Un explicativo de ingeniería en 3D sobre la succión del viento, dónde falla un techo y cómo lo protegen el clavado correcto, los flashings y la inspección.',pt:'Um explicativo de engenharia em 3D sobre a sucção do vento, onde o telhado falha e como a fixação correta, o rufo e a inspeção protegem a casa.'},
+    ['Roofing', 'Storm damage', '3D'], -9, 'Roofing'),
+  engineering('privacy-fence',
+    {en:'How a privacy fence stays standing',es:'Cómo se mantiene en pie una cerca de privacidad',pt:'Como uma cerca de privacidade fica de pé'},
+    {en:'A 3D engineering explainer on posts, footings, rails and wind load: what holds a privacy fence up and why fences lean.',es:'Un explicativo de ingeniería en 3D sobre postes, bases, travesaños y carga de viento: qué sostiene una cerca y por qué se inclina.',pt:'Um explicativo de engenharia em 3D sobre postes, bases, travessas e carga de vento: o que sustenta uma cerca e por que ela inclina.'},
+    ['Fence', 'Construction', '3D'], -8, 'Fences'),
+  engineering('solar-home',
+    {en:'How home solar actually works',es:'Cómo funciona realmente la energía solar en casa',pt:'Como a energia solar residencial realmente funciona'},
+    {en:'A 3D engineering explainer following sunlight from panel to inverter to your home’s electrical system.',es:'Un explicativo de ingeniería en 3D que sigue la luz del sol desde el panel hasta el inversor y el sistema eléctrico del hogar.',pt:'Um explicativo de engenharia em 3D que acompanha a luz do sol do painel ao inversor e ao sistema elétrico da casa.'},
+    ['Solar', 'Energy', '3D'], -7, 'Solar'),
+  engineering('ac-not-cooling',
+    {en:'Why your AC isn’t cooling',es:'Por qué tu aire acondicionado no enfría',pt:'Por que seu ar-condicionado não esfria'},
+    {en:'An engineering explainer on how an air conditioner moves heat, and the common faults that stop it cooling.',es:'Un explicativo de ingeniería sobre cómo un aire acondicionado mueve el calor y las fallas comunes que impiden que enfríe.',pt:'Um explicativo de engenharia sobre como um ar-condicionado move o calor e as falhas comuns que impedem o resfriamento.'},
+    ['HVAC', 'Air conditioning'], -6, 'HVAC'),
+  engineering('pool-build',
+    {en:'How a swimming pool is built',es:'Cómo se construye una piscina',pt:'Como uma piscina é construída'},
+    {en:'A 3D build-process explainer: excavation, steel, plumbing, shell and finish, step by step.',es:'Un explicativo 3D del proceso de construcción: excavación, acero, plomería, estructura y terminación, paso a paso.',pt:'Um explicativo 3D do processo de construção: escavação, aço, hidráulica, estrutura e acabamento, passo a passo.'},
+    ['Swimming pool', 'Construction', '3D'], -5, 'Swimming pools'),
+  engineering('brick-wall',
+    {en:'How a brick wall is built to last',es:'Cómo se construye un muro de ladrillo duradero',pt:'Como um muro de tijolos é construído para durar'},
+    {en:'A 3D build-process explainer on footings, mortar, ties and bond patterns in a load-bearing brick wall.',es:'Un explicativo 3D del proceso constructivo sobre cimientos, mortero, anclajes y aparejos de un muro de ladrillo portante.',pt:'Um explicativo 3D do processo construtivo sobre fundações, argamassa, amarrações e aparelhos de um muro de tijolos portante.'},
+    ['Masonry', 'Brick wall', 'Construction', '3D'], -4, 'Masonry'),
   video('bellevue-irrigation', 'educational',
     {en:'Bellevue irrigation, explained',es:'Riego en Bellevue, explicado',pt:'Irrigação em Bellevue, explicada'},
     {en:'An educational construction and home-services video about irrigation, made for short-form feeds.',es:'Un video educativo de construcción y servicios para el hogar sobre riego, en formato vertical.',pt:'Um vídeo educativo de construção e serviços residenciais sobre irrigação, em formato vertical.'},61.5,'English',['Construction','Irrigation','Home services','Educational'], -3, 'Home Services'),

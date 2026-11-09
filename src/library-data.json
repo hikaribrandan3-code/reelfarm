@@ -1,0 +1,50 @@
+{
+ "roof-storm-uplift": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-storm-uplift.mp4",
+  "duration": 78.3,
+  "aspectRatio": "9:16",
+  "industry": "Roofing",
+  "landing": "/demo/roofing",
+  "landingLabel": "Live Roofing Demo"
+ },
+ "privacy-fence": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/privacy-fence.mp4",
+  "duration": 50.9,
+  "aspectRatio": "9:16",
+  "industry": "Home Services",
+  "landing": null,
+  "landingLabel": null
+ },
+ "solar-home": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/solar-home.mp4",
+  "duration": 64,
+  "aspectRatio": "9:16",
+  "industry": "Solar",
+  "landing": null,
+  "landingLabel": null
+ },
+ "ac-not-cooling": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/ac-not-cooling.mp4",
+  "duration": 64.13,
+  "aspectRatio": "9:16",
+  "industry": "HVAC",
+  "landing": null,
+  "landingLabel": null
+ },
+ "pool-build": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/pool-build.mp4",
+  "duration": 70.8,
+  "aspectRatio": "9:16",
+  "industry": "Swimming Pools",
+  "landing": null,
+  "landingLabel": null
+ },
+ "brick-wall": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/brick-wall.mp4",
+  "duration": 70.3,
+  "aspectRatio": "9:16",
+  "industry": "Masonry",
+  "landing": null,
+  "landingLabel": null
+ }
+}
