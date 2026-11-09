@@ -1,94 +1,257 @@
 {
   "_note": "Source of truth for the ReelFarm portfolio. `npm run library:probe` fills measured fields into manifest.json. localPath uses ~ for the home folder. Masters are never modified or deleted.",
   "landingPages": {
-    "roofing": { "path": "/demo/roofing", "label": "Live Roofing Demo", "industry": "Roofing" }
+    "roofing": {
+      "path": "/demo/roofing",
+      "label": "Live Roofing Demo",
+      "industry": "Roofing"
+    }
   },
   "entries": [
     {
-      "id": "roof-storm-uplift", "category": "educational", "industry": "Roofing",
-      "title": "Why roofs get ripped off in storms",
-      "description": "A 3D engineering explainer on wind uplift, where roofs fail, and how correct nailing, flashing and inspection protect a home.",
-      "tags": ["Engineering", "Roofing", "Storm damage", "3D explainer", "Educational"],
-      "status": "final", "published": "new",
-      "master": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2.mp4",
-      "webSource": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4",
-      "alternates": [{"role": "social-loudness-copy (-14 LUFS, 96 kHz AAC); used as web source", "path": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4"}],
-      "landingPage": "roofing", "posterAt": 3.2, "order": -9
+      "id": "roof-build",
+      "category": "educational",
+      "industry": "Roofing",
+      "title": "How a roof is built, layer by layer",
+      "description": "A 3D construction-process explainer: framing, sheathing, drip edge, underlayment, flashing and shingles, and why the layers keep rain out.",
+      "tags": [
+        "Engineering",
+        "Roofing",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio.mp4",
+      "alternates": [
+        {
+          "role": "unmastered render with same tail (raw)",
+          "path": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio-raw.mp4"
+        },
+        {
+          "role": "earlier compressed take1",
+          "path": "~/Documents/reelsfarmagency/productions/roof-build/renders/archive/roof-build-take1-compressed.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 4,
+      "order": -10
     },
     {
-      "id": "privacy-fence", "category": "educational", "industry": "Home Services",
+      "id": "roof-storm-uplift",
+      "category": "educational",
+      "industry": "Roofing",
+      "title": "Why roofs get ripped off in storms",
+      "description": "A 3D engineering explainer on wind uplift, where roofs fail, and how correct nailing, flashing and inspection protect a home.",
+      "tags": [
+        "Engineering",
+        "Roofing",
+        "Storm damage",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4",
+      "alternates": [
+        {
+          "role": "social-loudness-copy (-14 LUFS, 96 kHz AAC); used as web source",
+          "path": "~/Documents/reelsfarmagency/productions/eng02-roof-wind-uplift/renders/eng02-roof-wind-uplift-v2-social.mp4"
+        }
+      ],
+      "landingPage": "roofing",
+      "posterAt": 3.2,
+      "order": -9
+    },
+    {
+      "id": "privacy-fence",
+      "category": "educational",
+      "industry": "Home Services",
       "title": "How a privacy fence stays standing",
       "description": "A 3D engineering explainer on posts, footings, rails and wind load: what holds a privacy fence up and why fences lean.",
-      "tags": ["Engineering", "Fence", "Construction", "3D explainer", "Educational"],
-      "status": "final", "published": "new",
+      "tags": [
+        "Engineering",
+        "Fence",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
       "master": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-FINAL.mp4",
       "webSource": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-FINAL.mp4",
       "alternates": [
-        {"role": "earlier take (v1), superseded", "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v1.mp4"},
-        {"role": "unmastered render (v2-raw), superseded by FINAL", "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v2-raw.mp4"}
+        {
+          "role": "earlier take (v1), superseded",
+          "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v1.mp4"
+        },
+        {
+          "role": "unmastered render (v2-raw), superseded by FINAL",
+          "path": "~/Documents/ChatGPT/menutap/motion-lab/reelfarm-eng01-privacy-fence/renders/privacy-fence-explainer-v2-raw.mp4"
+        }
       ],
-      "landingPage": null, "posterAt": 2.5, "order": -8
+      "landingPage": null,
+      "posterAt": 2.5,
+      "order": -8
     },
     {
-      "id": "solar-home", "category": "educational", "industry": "Solar",
+      "id": "solar-home",
+      "category": "educational",
+      "industry": "Solar",
       "title": "How home solar actually works",
       "description": "A 3D engineering explainer following sunlight from panel to inverter to your home's electrical system.",
-      "tags": ["Engineering", "Solar", "Energy", "3D explainer", "Educational"],
-      "status": "final", "published": "new",
+      "tags": [
+        "Engineering",
+        "Solar",
+        "Energy",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
       "master": "~/Documents/reelsfarmagency/productions/eng03-solar-home/renders/eng03-solar-home-v1.mp4",
       "webSource": "~/Documents/reelsfarmagency/productions/eng03-solar-home/renders/eng03-solar-home-v1.mp4",
-      "alternates": [{"role": "duplicate copy in Downloads (byte-identical name)", "path": "~/Downloads/eng03-solar-home-v1.mp4"}],
-      "landingPage": null, "posterAt": 3, "order": -7
+      "alternates": [
+        {
+          "role": "duplicate copy in Downloads (byte-identical name)",
+          "path": "~/Downloads/eng03-solar-home-v1.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 3,
+      "order": -7
     },
     {
-      "id": "ac-not-cooling", "category": "educational", "industry": "HVAC",
+      "id": "ac-not-cooling",
+      "category": "educational",
+      "industry": "HVAC",
       "title": "Why your AC isn't cooling",
       "description": "An engineering explainer on how an air conditioner moves heat, and the common faults that stop it cooling.",
-      "tags": ["Engineering", "HVAC", "Air conditioning", "Explainer", "Educational"],
-      "status": "final", "published": "new",
+      "tags": [
+        "Engineering",
+        "HVAC",
+        "Air conditioning",
+        "Explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
       "master": "~/Documents/reelsfarmagency/productions/eng04-ac-not-cooling/renders/eng04-ac-not-cooling.mp4",
       "webSource": "~/Documents/reelsfarmagency/productions/eng04-ac-not-cooling/renders/eng04-ac-not-cooling.mp4",
       "alternates": [],
-      "landingPage": null, "posterAt": 3, "order": -6
+      "landingPage": null,
+      "posterAt": 3,
+      "order": -6
     },
     {
-      "id": "pool-build", "category": "educational", "industry": "Swimming Pools",
+      "id": "pool-build",
+      "category": "educational",
+      "industry": "Swimming Pools",
       "title": "How a swimming pool is built",
       "description": "A 3D build-process explainer: excavation, steel, plumbing, shell and finish, step by step.",
-      "tags": ["Engineering", "Swimming pool", "Construction", "3D explainer", "Educational"],
-      "status": "final", "published": "new",
+      "tags": [
+        "Engineering",
+        "Swimming pool",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
       "master": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio.mp4",
       "webSource": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio.mp4",
       "alternates": [
-        {"role": "unmastered render with same tail (raw)", "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio-raw.mp4"},
-        {"role": "engineering cut without ReelFarm tail", "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-eng.mp4"},
-        {"role": "tail clip only", "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-tail-reelfarm-studio.mp4"}
+        {
+          "role": "unmastered render with same tail (raw)",
+          "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-reelfarm-studio-raw.mp4"
+        },
+        {
+          "role": "engineering cut without ReelFarm tail",
+          "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-eng.mp4"
+        },
+        {
+          "role": "tail clip only",
+          "path": "~/Documents/reelsfarmagency/productions/pool-build/renders/pool-build-tail-reelfarm-studio.mp4"
+        }
       ],
-      "landingPage": null, "posterAt": 3, "order": -5
+      "landingPage": null,
+      "posterAt": 3,
+      "order": -5
     },
     {
-      "id": "brick-wall", "category": "educational", "industry": "Masonry",
+      "id": "brick-wall",
+      "category": "educational",
+      "industry": "Masonry",
       "title": "How a brick wall is built to last",
       "description": "A 3D build-process explainer on footings, mortar, ties and bond patterns in a load-bearing brick wall.",
-      "tags": ["Engineering", "Masonry", "Brick wall", "Construction", "3D explainer", "Educational"],
-      "status": "final", "published": "new",
+      "tags": [
+        "Engineering",
+        "Masonry",
+        "Brick wall",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
       "master": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio.mp4",
       "webSource": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio.mp4",
       "alternates": [
-        {"role": "unmastered render with same tail (raw)", "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio-raw.mp4"},
-        {"role": "engineering cut without ReelFarm tail", "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-eng.mp4"},
-        {"role": "tail clip only", "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-tail-reelfarm-studio.mp4"},
-        {"role": "duplicate copy in Downloads", "path": "~/Downloads/brick-wall-reelfarm-studio.mp4"}
+        {
+          "role": "unmastered render with same tail (raw)",
+          "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-reelfarm-studio-raw.mp4"
+        },
+        {
+          "role": "engineering cut without ReelFarm tail",
+          "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-eng.mp4"
+        },
+        {
+          "role": "tail clip only",
+          "path": "~/Documents/reelsfarmagency/productions/brick-wall/renders/brick-wall-tail-reelfarm-studio.mp4"
+        },
+        {
+          "role": "duplicate copy in Downloads",
+          "path": "~/Downloads/brick-wall-reelfarm-studio.mp4"
+        }
       ],
-      "landingPage": null, "posterAt": 3, "order": -4
+      "landingPage": null,
+      "posterAt": 3,
+      "order": -4
     }
   ],
   "notPublished": [
-    {"id": "roof-build", "status": "in-progress", "reason": "Newest roofing film. 09_qa not done, render.lock present and a render job running; take1 archive is an earlier compressed take. Not touched.", "path": "~/Documents/reelsfarmagency/productions/roof-build"},
-    {"id": "zz-engine-selftest", "status": "test", "reason": "Engine self-test renders (demo-northwind/bluewave/summit-peak), not portfolio films.", "path": "~/Documents/reelsfarmagency/productions/zz-engine-selftest"},
-    {"id": "zz-v2-jobtest", "status": "test", "reason": "Engine v2 job test and archived takes, not portfolio films.", "path": "~/Documents/reelsfarmagency/productions/zz-v2-jobtest"},
-    {"id": "draft-and-scratch", "status": "draft", "reason": "snaps/draft.mp4 and out/_v.mp4 in each production are previews/QA scratch.", "path": "~/Documents/reelsfarmagency/productions/*/{snaps,out}"},
-    {"id": "bellevue-irrigation-v2/test", "status": "alternate", "reason": "Earlier/alternate Bellevue irrigation renders; the published version is already on the site.", "path": "~/Documents/ChatGPT/reelfarm-bellevue/renders"},
-    {"id": "lego-episode-01", "status": "published", "reason": "Already on the site as how-lego-bricks-are-made.", "path": "~/Documents/ChatGPT/menutap/motion-lab/lego-episode-01/renders/how-lego-bricks-are-made-ep01.mp4"}
+    {
+      "id": "zz-engine-selftest",
+      "status": "test",
+      "reason": "Engine self-test renders (demo-northwind/bluewave/summit-peak), not portfolio films.",
+      "path": "~/Documents/reelsfarmagency/productions/zz-engine-selftest"
+    },
+    {
+      "id": "zz-v2-jobtest",
+      "status": "test",
+      "reason": "Engine v2 job test and archived takes, not portfolio films.",
+      "path": "~/Documents/reelsfarmagency/productions/zz-v2-jobtest"
+    },
+    {
+      "id": "draft-and-scratch",
+      "status": "draft",
+      "reason": "snaps/draft.mp4 and out/_v.mp4 in each production are previews/QA scratch.",
+      "path": "~/Documents/reelsfarmagency/productions/*/{snaps,out}"
+    },
+    {
+      "id": "bellevue-irrigation-v2/test",
+      "status": "alternate",
+      "reason": "Earlier/alternate Bellevue irrigation renders; the published version is already on the site.",
+      "path": "~/Documents/ChatGPT/reelfarm-bellevue/renders"
+    },
+    {
+      "id": "lego-episode-01",
+      "status": "published",
+      "reason": "Already on the site as how-lego-bricks-are-made.",
+      "path": "~/Documents/ChatGPT/menutap/motion-lab/lego-episode-01/renders/how-lego-bricks-are-made-ep01.mp4"
+    }
   ]
 }

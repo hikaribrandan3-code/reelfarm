@@ -13,8 +13,15 @@ const engineering = (id, title, description, tags, order, trade) => {
     video: entry.video, trade, landing: entry.landing ? {path: entry.landing, label: entry.landingLabel} : null};
 };
 
+// Cartoons and comedy sit last; educational, visuals and editing lead.
+const categoryRank = v => ({educational: 0, visuals: 1, editing: 2, comedy: 3}[v.category] ?? 2);
+
 // Portfolio pieces supplied by the studio. No engagement or client claims.
 export const videos = [
+  engineering('roof-build',
+    {en:'How a roof is built, layer by layer',es:'Cómo se construye un techo, capa por capa',pt:'Como um telhado é construído, camada por camada'},
+    {en:'A 3D construction-process explainer: framing, sheathing, drip edge, underlayment, flashing and shingles, and why the layers keep rain out.',es:'Un explicativo 3D del proceso constructivo: estructura, tableros, goterón, membrana, flashing y tejas, y por qué las capas frenan la lluvia.',pt:'Um explicativo 3D do processo construtivo: estrutura, chapas, pingadeira, manta, rufos e telhas, e por que as camadas impedem a chuva.'},
+    ['Roofing', 'Construction', '3D'], -10, 'Roofing'),
   engineering('roof-storm-uplift',
     {en:'Why roofs get ripped off in storms',es:'Por qué las tormentas arrancan los techos',pt:'Por que as tempestades arrancam telhados'},
     {en:'A 3D engineering explainer on wind uplift, where roofs fail, and how correct nailing, flashing and inspection protect a home.',es:'Un explicativo de ingeniería en 3D sobre la succión del viento, dónde falla un techo y cómo lo protegen el clavado correcto, los flashings y la inspección.',pt:'Um explicativo de engenharia em 3D sobre a sucção do vento, onde o telhado falha e como a fixação correta, o rufo e a inspeção protegem a casa.'},
@@ -83,7 +90,7 @@ export const videos = [
     { en: 'The content treadmill', es: 'La rueda del contenido', pt: 'A esteira de conteúdo' },
     { en: 'A paper collage explainer that turns one real customer question into three useful posts.', es: 'Un video animado con collage de papel que convierte una pregunta real de un cliente en tres publicaciones útiles.', pt: 'Um vídeo animado com colagem de papel que transforma uma pergunta real de cliente em três publicações úteis.' },
     35.9, 'English', ['Motion graphics', 'Paper collage', 'Local marketing', 'Explainer'], 10),
-].filter(v => v.published).sort((a, b) => a.order - b.order);
+].filter(v => v.published).sort((a, b) => categoryRank(a) - categoryRank(b) || a.order - b.order);
 
 export const categories = ['all', 'comedy', 'educational', 'editing', 'visuals', 'promotions', 'explainers'];
 export const categoryMatches = (v, category) => category === 'all' || v.category === category || (category === 'promotions' && v.tags.includes('Promotion')) || (category === 'explainers' && v.tags.includes('Explainer'));

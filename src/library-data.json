@@ -1,4 +1,12 @@
 {
+ "roof-build": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-build.mp4",
+  "duration": 118.4,
+  "aspectRatio": "9:16",
+  "industry": "Roofing",
+  "landing": null,
+  "landingLabel": null
+ },
  "roof-storm-uplift": {
   "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-storm-uplift.mp4",
   "duration": 78.3,

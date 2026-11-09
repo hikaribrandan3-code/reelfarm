@@ -7,7 +7,7 @@ const token=process.env.BLOB_READ_WRITE_TOKEN||env.BLOB_READ_WRITE_TOKEN;if(!tok
 const manifest=JSON.parse(await readFile('library/manifest.json','utf8'));
 const put=async(file,pathname,type)=>{const {stdout,stderr}=await run('vercel',['blob','put',file,'--access','public','--pathname',pathname,'--content-type',type,'--allow-overwrite','true','--cache-control-max-age','31536000','--rw-token',token,'--non-interactive'],{maxBuffer:1e7});const m=(stdout+stderr).match(/https:\/\/\S+\.public\.blob\.vercel-storage\.com\/\S+/);if(!m)throw new Error('no url: '+stdout+stderr);return m[0].replace(/[)\].,]+$/,'');};
 for(const e of manifest.entries){
-  if(!e.optimized)continue;
+  if(!e.optimized||(e.hostedUrl&&!process.argv.includes('--force')))continue;
   e.hostedUrl=await put(e.optimized.file,`videos/${e.id}.mp4`,'video/mp4');
   e.hostedPosterUrl=await put(`library/out/posters/${e.id}.webp`,`posters/${e.id}.webp`,'image/webp');
   e.websiteStatus='published';

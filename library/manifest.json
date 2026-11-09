@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T05:58:32.547Z",
+  "generated": "2026-11-09T06:58:27.802Z",
   "landingPages": {
     "roofing": {
       "path": "/demo/roofing",
@@ -8,6 +8,58 @@
     }
   },
   "entries": [
+    {
+      "id": "roof-build",
+      "title": "How a roof is built, layer by layer",
+      "description": "A 3D construction-process explainer: framing, sheathing, drip edge, underlayment, flashing and shingles, and why the layers keep rain out.",
+      "category": "educational",
+      "industry": "Roofing",
+      "tags": [
+        "Engineering",
+        "Roofing",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio.mp4",
+      "duration": 118.4,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 404601747,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio.mp4",
+        "alternates": [
+          {
+            "role": "unmastered render with same tail (raw)",
+            "path": "~/Documents/reelsfarmagency/productions/roof-build/renders/roof-build-reelfarm-studio-raw.mp4"
+          },
+          {
+            "role": "earlier compressed take1",
+            "path": "~/Documents/reelsfarmagency/productions/roof-build/renders/archive/roof-build-take1-compressed.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-build.mp4",
+      "posterUrl": "/media/roof-build.webp",
+      "previewUrl": "/media/roof-build.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 4,
+      "order": -10,
+      "optimized": {
+        "file": "library/out/videos/roof-build.mp4",
+        "sizeBytes": 36024872,
+        "resolution": "1080x1920",
+        "duration": 118.4,
+        "sourceBytes": 404601747,
+        "savedPercent": 91.1,
+        "streams": "video,118.400000 audio,118.400000"
+      },
+      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/roof-build.webp"
+    },
     {
       "id": "roof-storm-uplift",
       "title": "Why roofs get ripped off in storms",
@@ -53,8 +105,7 @@
         "sourceBytes": 184914351,
         "savedPercent": 84.3,
         "streams": "video,78.300000 audio,78.300000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/roof-storm-uplift.webp"
+      }
     },
     {
       "id": "privacy-fence",
@@ -105,8 +156,7 @@
         "sourceBytes": 163112079,
         "savedPercent": 89.5,
         "streams": "video,50.900000 audio,50.900000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/privacy-fence.webp"
+      }
     },
     {
       "id": "solar-home",
@@ -153,8 +203,7 @@
         "sourceBytes": 139641982,
         "savedPercent": 83.6,
         "streams": "video,64.000000 audio,64.000000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/solar-home.webp"
+      }
     },
     {
       "id": "ac-not-cooling",
@@ -196,8 +245,7 @@
         "sourceBytes": 49236043,
         "savedPercent": 77.4,
         "streams": "video,64.133333 audio,64.133333"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/ac-not-cooling.webp"
+      }
     },
     {
       "id": "pool-build",
@@ -252,8 +300,7 @@
         "sourceBytes": 89725388,
         "savedPercent": 77.9,
         "streams": "video,70.766667 audio,70.800000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/pool-build.webp"
+      }
     },
     {
       "id": "brick-wall",
@@ -313,17 +360,10 @@
         "sourceBytes": 236518942,
         "savedPercent": 87.8,
         "streams": "video,70.200000 audio,70.300000"
-      },
-      "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/brick-wall.webp"
+      }
     }
   ],
   "notPublished": [
-    {
-      "id": "roof-build",
-      "status": "in-progress",
-      "reason": "Newest roofing film. 09_qa not done, render.lock present and a render job running; take1 archive is an earlier compressed take. Not touched.",
-      "path": "~/Documents/reelsfarmagency/productions/roof-build"
-    },
     {
       "id": "zz-engine-selftest",
       "status": "test",

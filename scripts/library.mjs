@@ -19,7 +19,7 @@ for(const e of src.entries){
     productionStatus:e.status,relationship:{role:'master',webSource:e.webSource,alternates:e.alternates},
     websiteStatus:old.websiteStatus||'not-published',hostedUrl:old.hostedUrl||null,posterUrl:`/media/${e.id}.webp`,previewUrl:`/media/${e.id}.preview.mp4`,
     landingPage:e.landingPage?src.landingPages[e.landingPage].path:null,landingLabel:e.landingPage?src.landingPages[e.landingPage].label:null,posterAt:e.posterAt,order:e.order,optimized:old.optimized||null};
-  if(cmd==='optimize'){
+  if(cmd==='optimize'&&(!process.argv[3]||process.argv[3]===e.id)){
     await mkdir('library/out/videos',{recursive:true});await mkdir('library/out/posters',{recursive:true});await mkdir('library/out/previews',{recursive:true});
     const input=home(e.webSource);const out=`library/out/videos/${e.id}.mp4`;
     // 1080x1920 is the master size (no upscaling). CRF + VBV cap keeps small text sharp while staying mobile friendly. faststart = streamable.
