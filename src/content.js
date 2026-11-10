@@ -18,6 +18,18 @@ const categoryRank = v => ({educational: 0, visuals: 1, editing: 2, comedy: 3}[v
 
 // Portfolio pieces supplied by the studio. No engagement or client claims.
 export const videos = [
+  video('noahs-ark', 'educational',
+    {en:'How was Noah’s Ark built?', es:'¿Cómo se construyó el arca de Noé?', pt:'Como a arca de Noé foi construída?'},
+    {en:'A hypothetical 3D reconstruction based on the Genesis account, showing how a timber hull of that scale could be framed, sealed and floated.', es:'Una reconstrucción hipotética en 3D basada en el relato del Génesis, que muestra cómo se podría armar, sellar y poner a flote un casco de madera de esa escala.', pt:'Uma reconstrução hipotética em 3D baseada no relato do Gênesis, mostrando como um casco de madeira desse porte poderia ser montado, vedado e colocado na água.'},
+    107.9, 'English', ['Engineering', 'Explainer', '3D', 'Shipbuilding'], -13, 'Coaching / Education'),
+  video('beyblade', 'educational',
+    {en:'The engineering behind Beyblade', es:'La ingeniería detrás de Beyblade', pt:'A engenharia por trás de Beyblade'},
+    {en:'A 3D breakdown of Storm Pegasus, from the ripcord launcher and the top’s parts to the physics of a battle.', es:'Un desglose en 3D de Storm Pegasus, desde el lanzador de cremallera y las piezas del trompo hasta la física de una batalla.', pt:'Uma análise em 3D do Storm Pegasus, do lançador de cremalheira e das peças do pião à física de uma batalha.'},
+    73.8, 'English', ['Engineering', 'Explainer', '3D', 'Toy mechanics'], -12, 'Coaching / Education'),
+  video('super-soaker', 'educational',
+    {en:'How a Super Soaker works', es:'Cómo funciona una Super Soaker', pt:'Como funciona uma Super Soaker'},
+    {en:'A 3D cutaway of a classic Super Soaker, showing how the pump and a separate air chamber build the pressure that fires the water.', es:'Un corte en 3D de una Super Soaker clásica que muestra cómo la bomba y una cámara de aire separada generan la presión que dispara el agua.', pt:'Um corte em 3D de uma Super Soaker clássica que mostra como a bomba e uma câmara de ar separada criam a pressão que dispara a água.'},
+    74.1, 'English', ['Engineering', 'Explainer', '3D', 'Toy mechanics'], -11, 'Coaching / Education'),
   engineering('roof-build',
     {en:'How a roof is built, layer by layer',es:'Cómo se construye un techo, capa por capa',pt:'Como um telhado é construído, camada por camada'},
     {en:'A 3D construction-process explainer: framing, sheathing, drip edge, underlayment, flashing and shingles, and why the layers keep rain out.',es:'Un explicativo 3D del proceso constructivo: estructura, tableros, goterón, membrana, flashing y tejas, y por qué las capas frenan la lluvia.',pt:'Um explicativo 3D do processo construtivo: estrutura, chapas, pingadeira, manta, rufos e telhas, e por que as camadas impedem a chuva.'},

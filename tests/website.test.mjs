@@ -5,10 +5,10 @@ import {videos,categoryMatches,durationLabel} from '../src/content.js';
 import {dictionaries,localPath,parsePath} from '../src/i18n.js';
 import {validateBrief,buildBrief,emailLink,LEAD_EMAIL} from '../src/lead.js';
 test('real video library is complete, unique, playable, and compressed',async()=>{
- assert.equal(videos.length,24);assert.equal(new Set(videos.map(v=>v.id)).size,24);
+ assert.equal(videos.length,27);assert.equal(new Set(videos.map(v=>v.id)).size,27);
  for(const v of videos){assert.ok(v.duration>0);for(const l of ['en','es','pt']){assert.ok(v.title[l]);assert.ok(v.description[l]);}if(v.video.startsWith('/')){const media=await stat('public'+v.video);assert.ok(media.size<9_000_000,`${v.id} exceeds web budget`);}else{assert.match(v.video,/^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\/videos\/[a-z0-9-]+\.mp4$/,`${v.id} must be hosted in Blob, not bundled`);}assert.ok((await stat('public'+v.poster)).size<100_000);assert.ok((await stat(`public/media/${v.id}.small.webp`)).size>0);assert.ok((await stat(`public/media/${v.id}.preview.mp4`)).size<300_000);}
 });
-test('filters use actual metadata and durations',()=>{assert.equal(videos.filter(v=>categoryMatches(v,'comedy')).length,5);assert.equal(videos.filter(v=>categoryMatches(v,'promotions')).length,2);assert.equal(videos.filter(v=>categoryMatches(v,'explainers')).length,15);assert.equal(durationLabel(70.9),'1:10');});
+test('filters use actual metadata and durations',()=>{assert.equal(videos.filter(v=>categoryMatches(v,'comedy')).length,5);assert.equal(videos.filter(v=>categoryMatches(v,'promotions')).length,2);assert.equal(videos.filter(v=>categoryMatches(v,'explainers')).length,18);assert.equal(durationLabel(70.9),'1:10');});
 test('locale dictionaries preserve all field and state translations',()=>{
  const walk=(base,other,path='')=>{for(const key of Object.keys(base)){assert.ok(key in other,`Missing ${path}${key}`);if(Array.isArray(base[key]))assert.equal(other[key].length,base[key].length,`${path}${key}`);else if(typeof base[key]==='object')walk(base[key],other[key],`${path}${key}.`);}};
  walk(dictionaries.en,dictionaries.es);walk(dictionaries.en,dictionaries.pt);
