@@ -8,13 +8,14 @@ const video = (id, category, title, description, duration, language, tags, order
 });
 // Engineering explainers: full-length MP4s live in Vercel Blob (see library/manifest.json), not in the deploy.
 // `landing` (from the manifest) is the optional demo landing page for the video; only videos with one show demo CTAs.
-const engineering = (id, title, description, tags, order, trade) => {
+const engineering = (id, title, description, tags, order, trade, industry = 'Home Services') => {
   const entry = library[id];
-  return {...video(id, 'educational', title, description, entry.duration, 'English', ['Engineering', 'Explainer', ...tags, 'Educational'], order, 'Home Services'),
+  return {...video(id, 'educational', title, description, entry.duration, 'English', ['Engineering', 'Explainer', ...tags, 'Educational'], order, industry),
     video: entry.video, trade, landing: entry.landing ? {path: entry.landing, label: entry.landingLabel} : null};
 };
 
-// Cartoons and comedy sit last; educational, visuals and editing lead.
+// Show contractor examples first, then keep the existing category order.
+const industryRank = v => v.industry === 'Home Services' ? 0 : 1;
 const categoryRank = v => ({educational: 0, visuals: 1, editing: 2, comedy: 3}[v.category] ?? 2);
 
 // Portfolio pieces supplied by the studio. No engagement or client claims.
@@ -62,11 +63,11 @@ export const videos = [
   engineering('hdd-vs-ssd',
     {en:'HDD vs SSD, explained',es:'HDD vs SSD, explicado',pt:'HDD vs SSD, explicado'},
     {en:'A blueprint-style engineering explainer on how hard drives and solid-state drives store data, and why one is so much faster.',es:'Un explicativo de ingeniería estilo plano sobre cómo los discos duros y los SSD guardan datos, y por qué uno es mucho más rápido.',pt:'Um explicativo de engenharia em estilo de planta sobre como HDs e SSDs armazenam dados, e por que um é muito mais rápido.'},
-    ['Technology', 'Blueprint'], -3.5, 'Technology'),
+    ['Technology', 'Blueprint'], -3.5, 'Technology', 'Other'),
   video('toy-loop-physics', 'educational',
     {en:'How can a toy car drive upside down?',es:'¿Cómo puede un autito de juguete ir boca abajo?',pt:'Como um carrinho de brinquedo consegue andar de cabeça para baixo?'},
     {en:'A 3D physics explainer on why a die-cast car stays on the track at the top of a loop: speed, gravity and the force that keeps it moving in a circle.',es:'Un explicativo de física en 3D sobre por qué un autito de metal se mantiene en la pista en lo alto de un rizo: velocidad, gravedad y la fuerza que lo mantiene en círculo.',pt:'Um explicativo de física em 3D sobre por que um carrinho de metal fica na pista no topo de um loop: velocidade, gravidade e a força que o mantém em círculo.'},
-    50.9,'English',['Physics','Explainer','Toy cars','Science','3D','Educational'], -3.1, 'Home Services'),
+    50.9,'English',['Physics','Explainer','Toy cars','Science','3D','Educational'], -3.1, 'Coaching / Education'),
   video('garage-epoxy-peeling', 'educational',
     {en:'Why garage epoxy floors start peeling',es:'Por qué los pisos epóxicos de garaje empiezan a despegarse',pt:'Por que pisos de epóxi de garagem começam a descascar'},
     {en:'A 3D educational explainer on why garage epoxy coatings delaminate, and how moisture testing, surface prep and a layered system build a lasting bond.',es:'Un explicativo educativo en 3D sobre por qué se despegan los recubrimientos epóxicos de garaje y cómo la prueba de humedad, la preparación de la superficie y un sistema por capas logran una unión duradera.',pt:'Um explicativo educacional em 3D sobre por que os revestimentos de epóxi de garagem descolam e como o teste de umidade, o preparo da superfície e um sistema em camadas criam uma aderência duradoura.'},
@@ -147,7 +148,7 @@ export const videos = [
     {en:'How does a turbocharger work?',es:'¿Cómo funciona un turbocompresor?',pt:'Como funciona um turbocompressor?'},
     {en:'A 3D cutaway follows exhaust gas through a turbine, shaft and compressor to show how a turbocharger forces more air into an engine.',es:'Un corte 3D sigue los gases de escape por la turbina, el eje y el compresor para mostrar cómo un turbo introduce más aire al motor.',pt:'Um corte 3D acompanha os gases de escape pela turbina, eixo e compressor para mostrar como o turbo força mais ar para dentro do motor.'},
     82.6,'English',['Engineering','Automotive','Mechanics','Explainer','Educational'],-22,'Other'),
-].filter(v => v.published).sort((a, b) => categoryRank(a) - categoryRank(b) || a.order - b.order);
+].filter(v => v.published).sort((a, b) => industryRank(a) - industryRank(b) || categoryRank(a) - categoryRank(b) || a.order - b.order);
 
 export const categories = ['all', 'comedy', 'educational', 'editing', 'visuals', 'promotions', 'explainers'];
 export const categoryMatches = (v, category) => category === 'all' || v.category === category || (category === 'promotions' && v.tags.includes('Promotion')) || (category === 'explainers' && v.tags.includes('Explainer'));
