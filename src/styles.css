@@ -156,3 +156,7 @@ html[lang="pt-BR"] .reel-hero h1>.pov-setup{font-size:clamp(32px,6.8vw,78px)}
 
 /* hero film: visible edge so the white opening never reads as a blank box */
 .reel-hero-film{background:#10242d!important;box-shadow:0 0 0 1px rgba(14,14,12,.16),0 18px 50px rgba(14,14,12,.2)!important}
+
+.production-status,.production-status-note{display:inline-flex;align-items:center;border:1px solid #ffffff70;border-radius:999px;background:#1c241cdb;color:#fff;padding:6px 10px;font-size:9px;font-weight:650;line-height:1.2;letter-spacing:.03em;backdrop-filter:blur(12px)}
+.production-status{position:absolute;z-index:2;top:51px;right:10px}
+.production-status-note{background:#eff4e9;color:#48583a;border-color:#dce7d0;margin:0 0 14px}

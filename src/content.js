@@ -1,9 +1,10 @@
 import library from './library-data.json' with {type: 'json'};
 
-const video = (id, category, title, description, duration, language, tags, order, industry = 'Restaurant / Food') => ({
-  id, slug: id, category, title, description, duration, language, tags,
-  industry, video: `/media/${id}.mp4`, poster: `/media/${id}.webp`,
+const video = (id, category, title, description, duration, language, tags, order, industry = 'Restaurant / Food', productionStatus = 'final') => ({
+  id, slug: id, category, title, description, language, tags,
+  industry, video: library[id]?.video || `/media/${id}.mp4`, poster: `/media/${id}.webp`,
   aspectRatio: '9:16', featured: order < 7, published: true, order,
+  duration: library[id]?.duration ?? duration, productionStatus,
 });
 // Engineering explainers: full-length MP4s live in Vercel Blob (see library/manifest.json), not in the deploy.
 // `landing` (from the manifest) is the optional demo landing page for the video; only videos with one show demo CTAs.
@@ -114,6 +115,38 @@ export const videos = [
     { en: 'The content treadmill', es: 'La rueda del contenido', pt: 'A esteira de conteúdo' },
     { en: 'A paper collage explainer that turns one real customer question into three useful posts.', es: 'Un video animado con collage de papel que convierte una pregunta real de un cliente en tres publicaciones útiles.', pt: 'Um vídeo animado com colagem de papel que transforma uma pergunta real de cliente em três publicações úteis.' },
     35.9, 'English', ['Motion graphics', 'Paper collage', 'Local marketing', 'Explainer'], 10),
+  video('3d-printed-firearms', 'educational',
+    {en:'How are 3D-printed guns made?',es:'¿Cómo se fabrican las armas impresas en 3D?',pt:'Como são fabricadas as armas impressas em 3D?'},
+    {en:'A 3D explainer on additive manufacturing, polymer layers, and the engineering questions around reliability, safety, and traceability.',es:'Una explicación en 3D sobre fabricación aditiva, capas de polímero y los desafíos de ingeniería, seguridad y trazabilidad.',pt:'Um explicativo em 3D sobre manufatura aditiva, camadas de polímero e os desafios de engenharia, segurança e rastreabilidade.'},
+    82.4,'English',['Engineering','Manufacturing','Additive manufacturing','Materials','Explainer','Educational'],-20,'Other'),
+  video('grenade-history', 'educational',
+    {en:'How was a hand grenade made?',es:'¿Cómo se fabricaba una granada de mano?',pt:'Como uma granada de mão era fabricada?'},
+    {en:'A history-led 3D look at wartime mass production, from cast-metal forms and machined surfaces to factory inspection standards.',es:'Una mirada histórica en 3D a la producción en masa durante la guerra: moldes de metal, superficies mecanizadas y controles de fábrica.',pt:'Um olhar histórico em 3D sobre a produção em massa durante a guerra: moldes metálicos, superfícies usinadas e inspeções de fábrica.'},
+    71.3,'English',['Engineering','History','Manufacturing','Industrial design','Explainer','Educational'],-19,'Other'),
+  video('jesus-tomb', 'educational',
+    {en:'How big was Jesus’ tomb?',es:'¿Qué tamaño tenía la tumba de Jesús?',pt:'Qual era o tamanho do túmulo de Jesus?'},
+    {en:'A scale-based 3D reconstruction explores the architecture of a first-century rock-cut tomb and the historical context around Jesus’ burial.',es:'Una reconstrucción 3D a escala explora la arquitectura de una tumba excavada en roca del siglo I y el contexto histórico del entierro de Jesús.',pt:'Uma reconstrução 3D em escala explora a arquitetura de uma tumba escavada na rocha do século I e o contexto histórico do sepultamento de Jesus.'},
+    79.23,'English',['History','Architecture','Archaeology','Explainer','Educational'],-18,'Other','in-progress'),
+  video('nuclear-bunker', 'educational',
+    {en:'How were Cold War nuclear bunkers built?',es:'¿Cómo se construían los refugios nucleares de la Guerra Fría?',pt:'Como eram construídos os bunkers nucleares da Guerra Fria?'},
+    {en:'A 3D architectural explainer on buried structures, reinforced concrete, blast doors and the systems designed to keep a Cold War shelter operating.',es:'Un explicativo arquitectónico en 3D sobre estructuras subterráneas, hormigón armado, puertas de protección y los sistemas de un refugio de la Guerra Fría.',pt:'Um explicativo arquitetônico em 3D sobre estruturas subterrâneas, concreto armado, portas de proteção e os sistemas de um abrigo da Guerra Fria.'},
+    93.3,'English',['Engineering','Architecture','Cold War','Construction','Explainer','Educational'],-17,'Other'),
+  video('occult-manuscripts', 'educational',
+    {en:'The engineering of an occult ritual',es:'La ingeniería de un ritual ocultista',pt:'A engenharia de um ritual ocultista'},
+    {en:'A historical 3D reconstruction explores the visual language and material culture of early modern grimoires, separating historical claims from evidence.',es:'Una reconstrucción histórica en 3D explora el lenguaje visual y la cultura material de grimorios modernos tempranos, distinguiendo las afirmaciones de la evidencia.',pt:'Uma reconstrução histórica em 3D explora a linguagem visual e a cultura material de grimórios da era moderna, distinguindo alegações de evidências.'},
+    89.3,'English',['History','Material culture','Manuscripts','Explainer','Educational'],-16,'Other'),
+  video('roman-cross', 'educational',
+    {en:'How was Jesus’ cross made?',es:'¿Cómo se construyó la cruz de Jesús?',pt:'Como foi feita a cruz de Jesus?'},
+    {en:'A historical 3D reconstruction examines a Roman cross’s timber frame and the practical carpentry questions behind a plausible build.',es:'Una reconstrucción histórica en 3D examina la estructura de madera de una cruz romana y las cuestiones prácticas de una construcción posible.',pt:'Uma reconstrução histórica em 3D examina a estrutura de madeira de uma cruz romana e as questões práticas de uma construção plausível.'},
+    82.2,'English',['History','Carpentry','Roman history','Explainer','Educational'],-15,'Other'),
+  video('tower-babel', 'educational',
+    {en:'How tall was the Tower of Babel?',es:'¿Qué altura tenía la Torre de Babel?',pt:'Qual era a altura da Torre de Babel?'},
+    {en:'A 3D exploration of the Genesis story uses Mesopotamian ziggurats as context for a reconstruction, while making clear that Babel’s height is unknown.',es:'Una exploración 3D del relato del Génesis toma los zigurats mesopotámicos como referencia y aclara que se desconoce la altura de Babel.',pt:'Uma exploração 3D do relato do Gênesis usa zigurates mesopotâmicos como contexto e deixa claro que a altura de Babel é desconhecida.'},
+    93.8,'English',['History','Architecture','Mesopotamia','Explainer','Educational'],-14,'Other','in-progress'),
+  video('turbocharger', 'educational',
+    {en:'How does a turbocharger work?',es:'¿Cómo funciona un turbocompresor?',pt:'Como funciona um turbocompressor?'},
+    {en:'A 3D cutaway follows exhaust gas through a turbine, shaft and compressor to show how a turbocharger forces more air into an engine.',es:'Un corte 3D sigue los gases de escape por la turbina, el eje y el compresor para mostrar cómo un turbo introduce más aire al motor.',pt:'Um corte 3D acompanha os gases de escape pela turbina, eixo e compressor para mostrar como o turbo força mais ar para dentro do motor.'},
+    82.6,'English',['Engineering','Automotive','Mechanics','Explainer','Educational'],-22,'Other'),
 ].filter(v => v.published).sort((a, b) => categoryRank(a) - categoryRank(b) || a.order - b.order);
 
 export const categories = ['all', 'comedy', 'educational', 'editing', 'visuals', 'promotions', 'explainers'];

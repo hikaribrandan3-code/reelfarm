@@ -62,5 +62,69 @@
   "industry": "Technology",
   "landing": null,
   "landingLabel": null
+ },
+ "3d-printed-firearms": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/3d-printed-firearms.mp4",
+  "duration": 82.4,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "grenade-history": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/grenade-history.mp4",
+  "duration": 71.3,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "jesus-tomb": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/jesus-tomb.mp4",
+  "duration": 79.23,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "nuclear-bunker": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/nuclear-bunker.mp4",
+  "duration": 93.3,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "occult-manuscripts": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/occult-manuscripts.mp4",
+  "duration": 89.3,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "roman-cross": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roman-cross.mp4",
+  "duration": 82.2,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "tower-babel": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/tower-babel.mp4",
+  "duration": 93.8,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
+ },
+ "turbocharger": {
+  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/turbocharger.mp4",
+  "duration": 82.6,
+  "aspectRatio": "9:16",
+  "industry": "Other",
+  "landing": null,
+  "landingLabel": null
  }
 }

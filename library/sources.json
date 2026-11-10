@@ -251,6 +251,225 @@
       "landingPage": null,
       "posterAt": 6,
       "order": -3.5
+    },
+    {
+      "id": "3d-printed-firearms",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How are 3D-printed guns made?",
+      "description": "A 3D explainer on additive manufacturing, polymer layers, and the engineering questions around reliability, safety, and traceability.",
+      "tags": [
+        "Engineering",
+        "Manufacturing",
+        "Additive manufacturing",
+        "Materials",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-reelfarm-engineering-cta-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 12,
+      "order": -20
+    },
+    {
+      "id": "grenade-history",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How a hand grenade was made",
+      "description": "A history-led 3D look at wartime mass production, from cast-metal forms and machined surfaces to the inspection standards factories used for consistency.",
+      "tags": [
+        "Engineering",
+        "History",
+        "Manufacturing",
+        "Industrial design",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-reelfarm-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 6,
+      "order": -19
+    },
+    {
+      "id": "jesus-tomb",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How big was Jesus’ tomb?",
+      "description": "A scale-based 3D reconstruction explores the architecture of a first-century rock-cut tomb and the historical context around Jesus’ burial.",
+      "tags": [
+        "History",
+        "Architecture",
+        "Archaeology",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "status": "in-progress",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 5,
+      "order": -18
+    },
+    {
+      "id": "nuclear-bunker",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How were Cold War nuclear bunkers built?",
+      "description": "A 3D architectural explainer on buried structures, reinforced concrete, blast doors and the systems designed to keep a Cold War shelter operating.",
+      "tags": [
+        "Engineering",
+        "Architecture",
+        "Cold War",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/reelfarm-nuclear-bunker-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/reelfarm-nuclear-bunker-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/renders/reelfarm-nuclear-bunker-reelfarm-engineering-cta-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 5,
+      "order": -17
+    },
+    {
+      "id": "occult-manuscripts",
+      "category": "educational",
+      "industry": "Other",
+      "title": "The engineering of an occult ritual",
+      "description": "A historical 3D reconstruction explores the visual language and material culture of early modern grimoires, separating historical claims from evidence.",
+      "tags": [
+        "History",
+        "Material culture",
+        "Manuscripts",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-reelfarm-occult-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 8,
+      "order": -16
+    },
+    {
+      "id": "roman-cross",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How was Jesus’ cross made?",
+      "description": "A historical 3D reconstruction examines a Roman cross’s timber frame and the practical carpentry questions behind a plausible build.",
+      "tags": [
+        "History",
+        "Carpentry",
+        "Roman history",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/reelfarm-roman-cross-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/reelfarm-roman-cross-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/renders/reelfarm-roman-cross-reelfarm-studio-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 7,
+      "order": -15
+    },
+    {
+      "id": "tower-babel",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How tall was the Tower of Babel?",
+      "description": "A 3D exploration of the Genesis story uses Mesopotamian ziggurats as context for a reconstruction, while making clear that Babel’s height is unknown.",
+      "tags": [
+        "History",
+        "Architecture",
+        "Mesopotamia",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "status": "in-progress",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 11,
+      "order": -14
+    },
+    {
+      "id": "turbocharger",
+      "category": "educational",
+      "industry": "Other",
+      "title": "How does a turbocharger work?",
+      "description": "A 3D cutaway follows exhaust gas through a turbine, shaft and compressor to show how a turbocharger forces more air into an engine.",
+      "tags": [
+        "Engineering",
+        "Automotive",
+        "Mechanics",
+        "3D explainer",
+        "Educational"
+      ],
+      "status": "final",
+      "published": "new",
+      "master": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-final.mp4",
+      "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-final.mp4",
+      "alternates": [
+        {
+          "role": "same-day raw render",
+          "path": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-reelfarm-studio-raw.mp4"
+        }
+      ],
+      "landingPage": null,
+      "posterAt": 7.5,
+      "order": -13
     }
   ],
   "notPublished": [

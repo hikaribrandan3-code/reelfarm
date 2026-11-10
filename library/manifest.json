@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T07:22:38.547Z",
+  "generated": "2026-11-10T20:38:40.681Z",
   "landingPages": {
     "roofing": {
       "path": "/demo/roofing",
@@ -412,6 +412,385 @@
         "streams": "video,82.200000 audio,82.200000"
       },
       "hostedPosterUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/posters/hdd-vs-ssd.webp"
+    },
+    {
+      "id": "3d-printed-firearms",
+      "title": "How are 3D-printed guns made?",
+      "description": "A 3D explainer on additive manufacturing, polymer layers, and the engineering questions around reliability, safety, and traceability.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "Engineering",
+        "Manufacturing",
+        "Additive manufacturing",
+        "Materials",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-final.mp4",
+      "duration": 82.4,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 64205889,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-3d-printed-firearms/renders/reelfarm-3d-printed-firearms-reelfarm-engineering-cta-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/3d-printed-firearms.mp4",
+      "posterUrl": "/media/3d-printed-firearms.webp",
+      "previewUrl": "/media/3d-printed-firearms.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 12,
+      "order": -20,
+      "optimized": {
+        "file": "library/out/videos/3d-printed-firearms.mp4",
+        "sizeBytes": 15587161,
+        "resolution": "1080x1920",
+        "duration": 82.4,
+        "sourceBytes": 64205889,
+        "savedPercent": 75.7,
+        "streams": "video,82.333333 audio,82.400000"
+      }
+    },
+    {
+      "id": "grenade-history",
+      "title": "How a hand grenade was made",
+      "description": "A history-led 3D look at wartime mass production, from cast-metal forms and machined surfaces to the inspection standards factories used for consistency.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "Engineering",
+        "History",
+        "Manufacturing",
+        "Industrial design",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-final.mp4",
+      "duration": 71.3,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 107644498,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-grenade-history/renders/reelfarm-grenade-history-reelfarm-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/grenade-history.mp4",
+      "posterUrl": "/media/grenade-history.webp",
+      "previewUrl": "/media/grenade-history.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 6,
+      "order": -19,
+      "optimized": {
+        "file": "library/out/videos/grenade-history.mp4",
+        "sizeBytes": 19130475,
+        "resolution": "1080x1920",
+        "duration": 71.3,
+        "sourceBytes": 107644498,
+        "savedPercent": 82.2,
+        "streams": "video,71.300000 audio,71.300000"
+      }
+    },
+    {
+      "id": "jesus-tomb",
+      "title": "How big was Jesus’ tomb?",
+      "description": "A scale-based 3D reconstruction explores the architecture of a first-century rock-cut tomb and the historical context around Jesus’ burial.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "History",
+        "Architecture",
+        "Archaeology",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb.mp4",
+      "duration": 79.23,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 107952811,
+      "productionStatus": "in-progress",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-jesus-tomb/renders/reelfarm-jesus-tomb-reelfarm-jesus-tomb-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/jesus-tomb.mp4",
+      "posterUrl": "/media/jesus-tomb.webp",
+      "previewUrl": "/media/jesus-tomb.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 5,
+      "order": -18,
+      "optimized": {
+        "file": "library/out/videos/jesus-tomb.mp4",
+        "sizeBytes": 20971196,
+        "resolution": "1080x1920",
+        "duration": 79.23,
+        "sourceBytes": 107952811,
+        "savedPercent": 80.6,
+        "streams": "video,79.233333 audio,79.233333"
+      }
+    },
+    {
+      "id": "nuclear-bunker",
+      "title": "How were Cold War nuclear bunkers built?",
+      "description": "A 3D architectural explainer on buried structures, reinforced concrete, blast doors and the systems designed to keep a Cold War shelter operating.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "Engineering",
+        "Architecture",
+        "Cold War",
+        "Construction",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/reelfarm-nuclear-bunker-final.mp4",
+      "duration": 93.3,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 149901365,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/reelfarm-nuclear-bunker-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-nuclear-bunker/renders/reelfarm-nuclear-bunker-reelfarm-engineering-cta-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/nuclear-bunker.mp4",
+      "posterUrl": "/media/nuclear-bunker.webp",
+      "previewUrl": "/media/nuclear-bunker.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 5,
+      "order": -17,
+      "optimized": {
+        "file": "library/out/videos/nuclear-bunker.mp4",
+        "sizeBytes": 23855047,
+        "resolution": "1080x1920",
+        "duration": 93.3,
+        "sourceBytes": 149901365,
+        "savedPercent": 84.1,
+        "streams": "video,93.233333 audio,93.300000"
+      }
+    },
+    {
+      "id": "occult-manuscripts",
+      "title": "The engineering of an occult ritual",
+      "description": "A historical 3D reconstruction explores the visual language and material culture of early modern grimoires, separating historical claims from evidence.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "History",
+        "Material culture",
+        "Manuscripts",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-final.mp4",
+      "duration": 89.3,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 67825707,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-occult-manuscripts/renders/reelfarm-occult-manuscripts-reelfarm-occult-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/occult-manuscripts.mp4",
+      "posterUrl": "/media/occult-manuscripts.webp",
+      "previewUrl": "/media/occult-manuscripts.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 8,
+      "order": -16,
+      "optimized": {
+        "file": "library/out/videos/occult-manuscripts.mp4",
+        "sizeBytes": 16797537,
+        "resolution": "1080x1920",
+        "duration": 89.3,
+        "sourceBytes": 67825707,
+        "savedPercent": 75.2,
+        "streams": "video,89.300000 audio,89.300000"
+      }
+    },
+    {
+      "id": "roman-cross",
+      "title": "How was Jesus’ cross made?",
+      "description": "A historical 3D reconstruction examines a Roman cross’s timber frame and the practical carpentry questions behind a plausible build.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "History",
+        "Carpentry",
+        "Roman history",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/reelfarm-roman-cross-final.mp4",
+      "duration": 82.2,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 309649987,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/reelfarm-roman-cross-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-roman-cross/renders/reelfarm-roman-cross-reelfarm-studio-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roman-cross.mp4",
+      "posterUrl": "/media/roman-cross.webp",
+      "previewUrl": "/media/roman-cross.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 7,
+      "order": -15,
+      "optimized": {
+        "file": "library/out/videos/roman-cross.mp4",
+        "sizeBytes": 32122345,
+        "resolution": "1080x1920",
+        "duration": 82.2,
+        "sourceBytes": 309649987,
+        "savedPercent": 89.6,
+        "streams": "video,82.200000 audio,82.200000"
+      }
+    },
+    {
+      "id": "tower-babel",
+      "title": "How tall was the Tower of Babel?",
+      "description": "A 3D exploration of the Genesis story uses Mesopotamian ziggurats as context for a reconstruction, while making clear that Babel’s height is unknown.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "History",
+        "Architecture",
+        "Mesopotamia",
+        "3D reconstruction",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio.mp4",
+      "duration": 93.8,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 267375230,
+      "productionStatus": "in-progress",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-tower-babel/renders/reelfarm-tower-babel-reelfarm-studio-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/tower-babel.mp4",
+      "posterUrl": "/media/tower-babel.webp",
+      "previewUrl": "/media/tower-babel.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 11,
+      "order": -14,
+      "optimized": {
+        "file": "library/out/videos/tower-babel.mp4",
+        "sizeBytes": 36639658,
+        "resolution": "1080x1920",
+        "duration": 93.8,
+        "sourceBytes": 267375230,
+        "savedPercent": 86.3,
+        "streams": "video,93.800000 audio,93.800000"
+      }
+    },
+    {
+      "id": "turbocharger",
+      "title": "How does a turbocharger work?",
+      "description": "A 3D cutaway follows exhaust gas through a turbine, shaft and compressor to show how a turbocharger forces more air into an engine.",
+      "category": "educational",
+      "industry": "Other",
+      "tags": [
+        "Engineering",
+        "Automotive",
+        "Mechanics",
+        "3D explainer",
+        "Educational"
+      ],
+      "localPath": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-final.mp4",
+      "duration": 82.6,
+      "resolution": "1080x1920",
+      "aspectRatio": "9:16",
+      "sizeBytes": 165797969,
+      "productionStatus": "final",
+      "relationship": {
+        "role": "master",
+        "webSource": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-final.mp4",
+        "alternates": [
+          {
+            "role": "same-day raw render",
+            "path": "~/Documents/reelsfarmagency/productions/reelfarm-turbocharger/renders/reelfarm-turbocharger-reelfarm-studio-raw.mp4"
+          }
+        ]
+      },
+      "websiteStatus": "published",
+      "hostedUrl": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/turbocharger.mp4",
+      "posterUrl": "/media/turbocharger.webp",
+      "previewUrl": "/media/turbocharger.preview.mp4",
+      "landingPage": null,
+      "landingLabel": null,
+      "posterAt": 7.5,
+      "order": -13,
+      "optimized": {
+        "file": "library/out/videos/turbocharger.mp4",
+        "sizeBytes": 27217963,
+        "resolution": "1080x1920",
+        "duration": 82.6,
+        "sourceBytes": 165797969,
+        "savedPercent": 83.6,
+        "streams": "video,82.600000 audio,82.600000"
+      }
     }
   ],
   "notPublished": [
