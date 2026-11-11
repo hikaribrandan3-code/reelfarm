@@ -12,6 +12,8 @@ export function buildBrief(values, references, source, timestamp = new Date().to
     `Prepared: ${timestamp}`, `Name: ${safe(values.name)}`, `Email: ${safe(values.email)}`,
     `Business: ${safe(values.business) || '—'}`, `Website / social: ${safe(values.website) || '—'}`,
     `Industry: ${safe(values.industry) || '—'}`, `Content: ${(values.formats || []).map(safe).join(', ') || '—'}`,
+    `Service: ${safe(values.service) || 'Other / Custom Project'}`,
+    `Price: ${({Starter:'$50 USD',Content:'$140 USD',Growth:'$300 USD/month',Creator:'Custom Quote'})[values.package] || 'Custom Quote'}`,
     `Package: ${safe(values.package) || 'Not sure yet'}`, `Frequency: ${safe(values.frequency) || 'Not sure yet'}`,
     `Languages: ${(values.languages || []).map(safe).join(', ') || '—'}`, '', 'PROJECT DETAILS',
     (values.project || '—').slice(0, 4000), '', 'VIDEO REFERENCES',

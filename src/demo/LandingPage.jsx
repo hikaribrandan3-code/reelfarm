@@ -26,7 +26,7 @@ function Player({video, caption}) {
   const play = () => ref.current?.play().catch(() => {});
   return <figure className="rr-player-wrap">
     <div className="rr-player">
-      <video ref={ref} src={video.video} poster={video.poster} controls playsInline preload="none" width="1080" height="1920" aria-label={video.title.en} onPlay={() => setStarted(true)}>
+      <video ref={ref} src={video.video} poster={video.poster} controls autoPlay muted loop playsInline preload="metadata" width="1080" height="1920" aria-label={video.title.en} onPlay={() => setStarted(true)}>
         Your browser can’t play this video. <a href={video.video}>Open the video</a>.
       </video>
       {!started && <button type="button" className="rr-play" onClick={play} aria-label="Play the roof storm damage video"><span><Icon name="play" size={30}/></span></button>}
@@ -36,7 +36,7 @@ function Player({video, caption}) {
 }
 
 const empty = {name: '', phone: '', email: '', zip: '', service: '', message: '', website: ''};
-function EstimateForm({config}) {
+function EstimateForm({config, preview = false}) {
   const [values, setValues] = useState(empty);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | sent | unavailable | failed
@@ -49,6 +49,7 @@ function EstimateForm({config}) {
     const result = validateLead(values);
     setErrors(result.errors);
     if (!result.ok) { requestAnimationFrame(() => document.querySelector('.rr-field.has-error :is(input,select,textarea)')?.focus()); return; }
+    if (preview) { setStatus('preview'); return; }
     setStatus('sending');
     try {
       const response = await fetch('/api/lead', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({...values, campaign: config.id, startedAt: startedAt.current})});
@@ -58,6 +59,7 @@ function EstimateForm({config}) {
       setStatus(data.error === 'not_configured' ? 'unavailable' : 'failed');
     } catch { setStatus('failed'); }
   }
+  if (status === 'preview') return <div className="rr-success" role="status"><h3>Demo request complete</h3><p>This is a preview. Your details were not sent.</p><button type="button" className="rr-button" onClick={() => { setValues(empty); setStatus('idle'); }}>Try again</button></div>;
   if (status === 'sent') return <div className="rr-success" role="status" tabIndex={-1} ref={el => el?.focus()}>
     <span className="rr-success-icon"><Icon name="check" size={30}/></span>
     <h3>Request received</h3>
@@ -72,7 +74,7 @@ function EstimateForm({config}) {
       {field('phone', 'Phone number', <div className="rr-input"><Icon name="phone" size={19}/><input {...common('phone')} type="tel" inputMode="tel" autoComplete="tel" placeholder="Phone Number" maxLength={20} required/></div>)}
     </div>
     {field('email', 'Email address', <div className="rr-input"><Icon name="mail" size={19}/><input {...common('email')} type="email" inputMode="email" autoComplete="email" placeholder="Email Address" maxLength={254} required/></div>)}
-    <div className="rr-row">
+    <div className="rr-row rr-extra-fields">
       {field('zip', 'ZIP code', <div className="rr-input"><Icon name="pin" size={19}/><input {...common('zip')} inputMode="numeric" autoComplete="postal-code" placeholder="ZIP Code" maxLength={5} pattern="[0-9]*" required/></div>)}
       {field('service', 'Service needed', <div className="rr-input"><Icon name="home" size={19}/><select {...common('service')} required><option value="">Service Needed</option>{SERVICE_OPTIONS.map(([id, label]) => <option key={id} value={id}>{label}</option>)}</select><Icon name="chevron" size={18}/></div>)}
     </div>
@@ -85,10 +87,47 @@ function EstimateForm({config}) {
   </form>;
 }
 
-export default function LandingPage({config}) {
+export default function LandingPage({config, preview = false}) {
+  useEffect(() => {
+    if (!preview) return;
+    let timer, raf, stopped = false, phase = 0;
+    const scroll = () => {
+      if (stopped) return;
+      const root = document.scrollingElement;
+      const max = root.scrollHeight - window.innerHeight;
+      const target = phase === 0 ? Math.min(document.querySelector('#estimate')?.offsetTop || 0,max) : max;
+      const start = root.scrollTop, duration = phase === 0 ? 5500 : 4200, began = performance.now();
+      const tick = now => {
+        if (stopped) return;
+        const p = Math.min(1,(now-began)/duration);
+        root.scrollTop = start + (target-start)*p;
+        if (p<1) raf=requestAnimationFrame(tick);
+        else { phase=(phase+1)%2; timer=setTimeout(scroll,phase===1?1100:500); }
+      };
+      raf=requestAnimationFrame(tick);
+    };
+    const receive = event => {
+      if (event.origin !== location.origin) return;
+      if (event.data?.type === 'reelfarm-preview-start' && !stopped) timer=setTimeout(scroll,1500);
+      if (event.data?.type === 'reelfarm-preview-stop') { stopped=true; clearTimeout(timer); cancelAnimationFrame(raf); }
+    };
+    const stop = () => { stopped=true; clearTimeout(timer); cancelAnimationFrame(raf); };
+    addEventListener('message',receive);
+    for (const type of ['pointerdown','touchstart','wheel','keydown','focusin']) addEventListener(type,stop,{once:true,passive:true});
+    return () => { stop(); removeEventListener('message',receive); };
+  },[preview]);
   const video = videos.find(v => v.id === config.videoId);
   const {brand, hero} = config;
   const [stuck, setStuck] = useState(false);
+  const [home, setHome] = useState('/');
+  const [backLabel, setBackLabel] = useState('Back to ReelFarm');
+  useEffect(() => {
+    const locale = new URLSearchParams(location.search).get('lang');
+    if (locale === 'es' || locale === 'pt') {
+      setHome('/' + locale + '/');
+      setBackLabel(locale === 'es' ? 'Volver a ReelFarm' : 'Voltar para ReelFarm');
+    }
+  }, []);
   useEffect(() => {
     const form = document.getElementById('estimate'), top = document.querySelector('.rr-hero');
     if (!form || !top || !('IntersectionObserver' in window)) return;
@@ -97,28 +136,36 @@ export default function LandingPage({config}) {
     observer.observe(form); observer.observe(top);
     return () => observer.disconnect();
   }, []);
-  return <div className="rr-page">
+  return <div className={preview ? "rr-page rr-page-preview" : "rr-page"}>
     <picture className="rr-bg" aria-hidden="true"><img src="/demo/storm-1024.webp" srcSet="/demo/storm-640.webp 640w, /demo/storm-1024.webp 1024w" sizes="100vw" width="1024" height="1536" alt="" decoding="async"/></picture>
     <div className="rr-scrim" aria-hidden="true"/>
     <a className="rr-skip" href="#estimate">Skip to estimate form</a>
     <header className="rr-header"><div className="rr-header-inner">
+      <a href={home} className="rr-back" data-full-navigation="" onClick={event => {
+        const from = document.referrer && new URL(document.referrer);
+        if (from && from.origin === location.origin && from.pathname === home && history.length > 1) {
+          event.preventDefault();
+          history.back();
+        }
+      }}><Icon name="arrow" size={16}/>{backLabel}</a>
       <a className="rr-brand" href="#top" aria-label={`${brand.name} home`}><span className="rr-mark">{brand.monogram}</span><span><strong>{brand.name}</strong><small>{brand.demo ? 'Demo · Roofing' : brand.tagline}</small></span></a>
       <nav className="rr-nav" aria-label="Page"><a href="#services">Services</a><a href="#how">How it works</a><a href="#estimate">Free estimate</a></nav>
       <a className="rr-call" href={brand.phoneHref}><Icon name="phone" size={19}/>Call Now</a>
     </div></header>
     <main id="top">
       <section className="rr-hero rr-wrap">
-        <Player video={video} caption={config.videoCaption}/>
         <div className="rr-hero-copy">
-          <h1>{hero.lead}<br/><em>{hero.accent}</em></h1>
+          <h1>{preview ? <>Roof Repair<br/><em>Estimator</em></> : <>{hero.lead}<br/><em>{hero.accent}</em></>}</h1>
           <p>{hero.copy}</p>
           <a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a>
         </div>
+        {!preview && <Player video={video} caption={config.videoCaption}/>}
       </section>
       <section className="rr-services rr-wrap" id="services" aria-label="Services"><ul>{config.services.map(s => <li key={s.title}><Icon name={s.icon} size={34}/><h2>{s.title}</h2><p>{s.text}</p></li>)}</ul></section>
       <section className="rr-estimate rr-wrap" id="estimate" aria-labelledby="estimate-title">
-        <div className="rr-card"><h2 id="estimate-title">Get a Free Roof Estimate</h2><p className="rr-sub">Tell us about your project and we’ll be in touch soon.</p><EstimateForm config={config}/></div>
+        <div className="rr-card"><h2 id="estimate-title">Get a Free Roof Estimate</h2><p className="rr-sub">Tell us about your project and we’ll be in touch soon.</p><EstimateForm config={config} preview={preview}/></div>
       </section>
+
       <section className="rr-how rr-wrap" id="how" aria-labelledby="how-title">
         <h2 id="how-title">What happens after you reach out</h2>
         <ol>{config.steps.map((s, i) => <li key={s.title}><span>{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>)}</ol>

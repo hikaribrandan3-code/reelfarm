@@ -39,7 +39,7 @@ test('only videos with a configured landing page show demo CTAs, and the page is
  const explore=await readFile('dist/explore/index.html','utf8');assert.match(explore,/View Live Roofing Demo/);assert.equal(explore.split('View Live Roofing Demo').length-1,1);
  const detail=await readFile('dist/explore/roof-storm-uplift/index.html','utf8');assert.match(detail,/See This Video in a Real Landing Page/);
  const other=await readFile('dist/explore/privacy-fence/index.html','utf8');assert.ok(!other.includes('Landing Page'));
- assert.match(await readFile('dist/index.html','utf8'),/See How Your Content Turns Into Customer Inquiries/);
+ assert.match(await readFile('dist/index.html','utf8'),/Roof Repair[^<]*(?:<!--.*?-->)?[^<]*<em>Estimator/);
 });
 test('estimate form validation',async()=>{
  const {validateLead}=await import('../src/demo/leadSchema.js');

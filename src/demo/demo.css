@@ -61,3 +61,65 @@
 
 .rr-field:not(.rr-field-visible) label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
 .rr-field-visible label{margin-bottom:6px}
+
+.rr-back { display:inline-flex; min-height:42px; align-items:center; gap:5px; flex-shrink:0; color:white; font-weight:750; font-size:.85rem; }
+.rr-back .rr-icon { rotate:180deg; }
+@media(max-width:600px) {
+  .rr-header .rr-header-inner { min-height:64px; height:auto; gap:4px 8px; padding:4px 0 8px; flex-wrap:wrap; }
+  .rr-back { order:-1; flex-basis:100%; min-height:30px; }
+  .rr-header .rr-call { min-height:38px; height:38px; padding-inline:10px; font-size:.85rem; }
+  .rr-header .rr-brand strong { font-size:1rem; }
+  .rr-page :is(#estimate,#services,#how) { scroll-margin-top:100px; }
+}
+.rr-hero .rr-hero-copy { order:0; }
+.rr-hero .rr-player-wrap { order:1; }
+.rr-player { width:min(100%,420px); height:auto; max-height:none; aspect-ratio:9/16; }
+@media(min-width:761px) {
+  .rr-hero { display:flex; flex-direction:column; gap:24px; }
+  .rr-hero-copy { text-align:center; align-items:center; }
+}
+/* The embedded preview uses the same landing page and a non-sending form. */
+.rr-page-preview { padding-bottom:24px; }
+.rr-page-preview .rr-header { position:relative; }
+.rr-page-preview .rr-back,.rr-page-preview .rr-call,.rr-page-preview .rr-nav,.rr-page-preview .rr-sticky { display:none; }
+.rr-page-preview .rr-header-inner { min-height:58px; padding:8px 0; }
+.rr-page-preview .rr-hero { display:flex; gap:12px; padding-top:14px; }
+.rr-page-preview .rr-hero-copy { text-align:center; align-items:center; }
+.rr-page-preview .rr-hero h1 { font-size:clamp(26px,10vw,36px); }
+.rr-page-preview .rr-hero-copy p { font-size:14px; }
+.rr-page-preview .rr-hero-copy .rr-button { background:#ffd52c; color:#161a12; min-height:46px; font-size:14px; }
+.rr-page-preview .rr-player-wrap { order:2; }
+.rr-page-preview .rr-player { max-height:280px; width:auto; }
+.rr-page-preview .rr-card { padding:17px 14px; }
+.rr-page-preview .rr-submit { background:#ffd52c; color:#15170e; font-size:14px; }
+.rr-page-preview main { display:flex; flex-direction:column; }
+.rr-page-preview .rr-hero { order:0; }
+.rr-page-preview .rr-estimate { order:1; margin-top:12px; }
+.rr-page-preview .rr-preview-video { order:2; margin-top:24px; }
+.rr-page-preview .rr-services { order:3; }
+.rr-page-preview .rr-how { order:4; }
+.rr-page-preview .rr-final { order:5; }
+.rr-page-preview .rr-form { gap:6px; }
+.rr-page-preview .rr-field label { font-size:12px; margin-bottom:2px; }
+.rr-page-preview .rr-input { min-height:42px; }
+.rr-page-preview .rr-input input,.rr-page-preview .rr-input select { padding:10px 0; }
+.rr-page-preview .rr-hero-copy { gap:8px; }
+.rr-page-preview .rr-hero-copy p, .rr-page-preview .rr-hero-copy .rr-button { display:none; }
+.rr-page-preview .rr-estimate { margin-top:10px; }
+.rr-page-preview .rr-card { background:transparent; box-shadow:none; padding:4px 0; color:white; }
+.rr-page-preview .rr-card h2,.rr-page-preview .rr-card .rr-sub { display:none; }
+.rr-page-preview .rr-field label { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+.rr-page-preview .rr-extra-fields,.rr-page-preview .rr-field-visible,.rr-page-preview .rr-assure { display:none; }
+.rr-page-preview .rr-row { display:grid; grid-template-columns:1fr; gap:7px; }
+.rr-page-preview .rr-input { min-height:44px; border-radius:10px; }
+.rr-page-preview .rr-submit { margin-top:3px; min-height:48px; border-radius:10px; }
+.rr-page-preview .rr-hero h1 em { color:#ffd52c; }
+.rr-page:not(.rr-page-preview) .rr-player { width:min(85%,357px); }
+.rr-page:not(.rr-page-preview) .rr-card { padding:18px clamp(12px,3vw,28px); }
+.rr-page:not(.rr-page-preview) .rr-form,.rr-page:not(.rr-page-preview) .rr-row { gap:7px; }
+.rr-page:not(.rr-page-preview) .rr-field label { margin-bottom:2px; }
+.rr-page:not(.rr-page-preview) .rr-input { min-height:44px; }
+.rr-page:not(.rr-page-preview) .rr-input :is(input,select,textarea) { padding-block:8px; }
+.rr-page:not(.rr-page-preview) .rr-textarea textarea { min-height:60px; }
+.rr-page:not(.rr-page-preview) .rr-submit { min-height:46px; }
+@media(min-width:350px) { .rr-page:not(.rr-page-preview) .rr-row { grid-template-columns:repeat(2,minmax(0,1fr)); } }

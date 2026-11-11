@@ -1,5 +1,12 @@
 import React from 'react';
 const paths = {
+ website:<><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M2 8h20M6 5.5h.01M9 5.5h.01M5 18l4-5 4 3 3-5 4 7"/></>,
+ headset:<><path d="M4 13v-2a8 8 0 0 1 16 0v2M20 18v1a3 3 0 0 1-3 3h-4"/><rect x="2" y="11" width="5" height="8" rx="2"/><rect x="17" y="11" width="5" height="8" rx="2"/></>,
+ chevron:<path d="m5 9 7 7 7-7"/>,
+  like: <><path d="M7 10v11H3V10Zm0 10h11a2 2 0 0 0 2-1.6l1-6a2 2 0 0 0-2-2.4h-5l1-4c.5-2-1-3-2-3l-6 7"/></>,
+  user: <><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2"/></>,
+  phone: <path d="M6 3h3l2 5-2 2a15 15 0 0 0 5 5l2-2 5 2v3c0 2-1 3-3 3A17 17 0 0 1 3 6c0-2 1-3 3-3Z"/>,
+
   "volume-off": <><path d="m11 4-5 4H3v8h3l5 4Z"/><path d="m16 9 5 6m-5 0 5-6"/></>,
   heart: <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>,
   share: <><path d="m14 3 7 7-7 7v-5c-6 0-9 3-11 8 0-10 4-14 11-14Z"/></>,
