@@ -612,3 +612,18 @@ html.dk-motion [data-dk-depth]{transform:translate3d(0,var(--py,0px),0);will-cha
 .rr-3d .rr-hero-copy{transform:translate3d(0,calc(var(--rr-s,0)*-.1px),0);opacity:calc(1 - var(--rr-t,0)*.55)}
 }
 
+/* ---- Watch Our Demo trigger in the desktop hero (>= 1051px) ---- */
+@media(min-width:1051px){
+.dk-demo-link{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:6px 14px 6px 6px;border-radius:99px;color:var(--dk-ink);font-weight:700;font-size:1.02rem;text-decoration:none;transition:background .25s ease}
+.dk-demo-link:hover{background:#eef9ec}
+.dk-demo-link:focus-visible{outline:3px solid #0a7e16;outline-offset:3px}
+.dk-demo-play{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--dk-green);color:#fff;box-shadow:0 6px 16px #0a7e1638}
+.dk-demo-play svg{fill:currentColor;margin-left:2px}
+.dk-demo-link small{color:var(--dk-muted);font-size:.86rem;font-weight:600}
+.dk-demo-link small::before{content:"\00b7";margin-right:8px}
+}
+@media(min-width:1051px) and (prefers-reduced-motion:no-preference){
+.dk-demo-play{animation:dk-demo-ring 2.8s ease-out infinite}
+@keyframes dk-demo-ring{0%{box-shadow:0 6px 16px #0a7e1638,0 0 0 0 #0a7e1655}70%,100%{box-shadow:0 6px 16px #0a7e1638,0 0 0 12px #0a7e1600}}
+}
+

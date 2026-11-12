@@ -8,6 +8,10 @@ import {localPath} from '../i18n.js';
 import {validateBrief, emailLink} from '../lead.js';
 
 const roof = videos.find(v => v.id === 'roof-build');
+const demoVideo = videos.find(v => v.id === 'roof-storm-uplift');
+// Same behaviour as the phone "See It In Action" / "Learn More" links: remember where the visitor was so
+// the back button on the demo page returns them to the same spot, and navigate to the full demo page.
+const rememberDemoReturn = () => { try { sessionStorage.setItem('reelfarm-demo-return', JSON.stringify({home: location.pathname, y: window.scrollY})); } catch {} };
 
 const I = ({children, size = 22, sw = 1.8}) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
 const HardHat = () => <I size={26}><path d="M4 18h16M5 18v-2a7 7 0 0 1 14 0v2M12 6v4M9 8.5v2M15 8.5v2"/><path d="M3 18h18v2H3z"/></I>;
@@ -37,6 +41,11 @@ export function DesktopHero() {
         <a className="dk-btn dk-btn-primary" href="#contractor-quote">Get a Free Quote<Icon name="arrow" size={20}/></a>
         <a className="dk-btn dk-btn-outline" href="#trade-title"><Icon name="play" size={18}/>Explore Our Videos</a>
       </div>
+      <a className="dk-demo-link" href="/demo/roofing" data-full-navigation="" onClick={rememberDemoReturn}>
+        <span className="dk-demo-play" aria-hidden="true"><Icon name="play" size={16}/></span>
+        <span>Watch Our Demo</span>
+        <small>{demoVideo ? fmtDur(demoVideo.duration) + ' video' : 'video'}</small>
+      </a>
       <ul className="dk-benefits">
         <li><span className="dk-tile"><HardHat/></span><span>Made for<br/>contractors</span></li>
         <li><span className="dk-tile"><Icon name="video" size={26}/></span><span>Custom<br/>video production</span></li>
@@ -90,7 +99,7 @@ export function DeviceLoop({className = ''}) {
     return () => { io.disconnect(); clearInterval(timer); };
   }, []);
   const ok = st > 0 ? ' ok' : '';
-  const remember = () => { try { sessionStorage.setItem('reelfarm-demo-return', JSON.stringify({home: location.pathname, y: window.scrollY})); } catch {} };
+  const remember = rememberDemoReturn;
   return <a ref={ref} className={'dk-devices dm-dark ' + className} href="/demo/roofing" data-full-navigation="" onClick={remember} aria-label="Open the live Summit Peak Roofing demo page">
     <div className="dk-laptop">
       <div className="dk-screen">

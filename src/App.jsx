@@ -12,7 +12,7 @@ import ContractorHome from './ContractorHome.jsx';
 import LandingPage from './demo/LandingPage.jsx';
 export {faqCopy};
 import {buildBrief, emailLink, validateBrief, LEAD_EMAIL} from './lead.js';
-import {SOCIAL_LINKS, SOCIAL_ICONS} from './socialLinks.js';
+import {SOCIAL_LINKS, SOCIAL_ICONS, socialLabels} from './socialLinks.js';
 import {useDesktopMotion} from './desktop/motion.js';
 import {useMobileMotion} from './mobileMotion.js';
 import {DeviceLoop, DesktopRelated, ContactDesk} from './desktop/DesktopSections.jsx';
@@ -87,7 +87,7 @@ function Footer(){const {t,locale}=useSite();const en=locale==='en';const year=n
   <div className="fd-col fd-touch"><h2>Get in Touch</h2><ul><li><a href={`mailto:${LEAD_EMAIL}`}><Icon name="mail" size={22}/>{LEAD_EMAIL}</a></li></ul><Link className="dk-btn dk-btn-primary" to="/quote">Get a Free Quote<Icon name="arrow" size={20}/></Link></div>
  </div>
  <div className="fd-bottom"><small>© {year} ReelFarm. All rights reserved.</small><Link to="/privacy">Privacy Policy</Link>
-  <ul className="fd-social" aria-label="ReelFarm on social media">{SOCIAL_ICONS.map(({name,asset,color})=>{const href=SOCIAL_LINKS.find(l=>l.name===name)?.href;const glyph=<span className={'dk-mask'+(color==='ig'?' dk-ig':'')} style={{'--brand':color==='ig'?undefined:color,maskImage:`url(/brand/${asset}.svg)`,WebkitMaskImage:`url(/brand/${asset}.svg)`}}/>;return <li key={name}>{href?<a href={href} target="_blank" rel="noopener noreferrer" aria-label={`ReelFarm on ${name}`}>{glyph}</a>:<span className="fd-social-off" role="img" aria-label={name} title={name}>{glyph}</span>}</li>;})}</ul></div>
+  <ul className="fd-social" aria-label={socialLabels.group[locale]||socialLabels.group.en}>{SOCIAL_ICONS.map(({name,asset,color})=>{const href=SOCIAL_LINKS.find(l=>l.name===name)?.href;if(!href)return null;const glyph=<span aria-hidden="true" className={'dk-mask'+(color==='ig'?' dk-ig':'')} style={{'--brand':color==='ig'?undefined:color,maskImage:`url(/brand/${asset}.svg)`,WebkitMaskImage:`url(/brand/${asset}.svg)`}}/>;return <li key={name}><a href={href} target="_blank" rel="noopener noreferrer" aria-label={(socialLabels.link[locale]||socialLabels.link.en)(name)}>{glyph}</a></li>;})}</ul></div>
 </div>}</footer>;}
 
 function Preview({video, enabled=true, eager=false, className='', paused=false}){

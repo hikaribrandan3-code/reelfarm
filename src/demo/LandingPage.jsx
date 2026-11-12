@@ -15,6 +15,9 @@ const paths = {
   check: <path d="m5 12.500 4.500 4.500L19 7.500"/>,
   arrow: <path d="M5 12h14m-5-6 6 6-6 6"/>,
   send: <path d="M21 3 3 10.500l7 2.500 2.500 7zM10 13l5-4.500"/>,
+  bolt: <path d="M13 2 4 14h7l-1 8 9-12h-7z"/>,
+  clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
+  restart: <><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.500h4.500"/></>,
   chevron: <path d="m6 9 6 6 6-6"/>,
   play: <path d="M8 5.500v13l11-6.500z" fill="currentColor"/>,
 };
@@ -26,9 +29,10 @@ function Player({video, caption}) {
   const play = () => ref.current?.play().catch(() => {});
   return <figure className="rr-player-wrap">
     <div className="rr-player">
-      <video ref={ref} src={video.video} poster={video.poster} controls autoPlay muted loop playsInline preload="metadata" width="1080" height="1920" aria-label={video.title.en} onPlay={() => setStarted(true)}>
+      <video id="rr-demo-video" ref={ref} src={video.video} poster={video.poster} controls autoPlay muted loop playsInline preload="metadata" width="1080" height="1920" aria-label={video.title.en} onPlay={() => setStarted(true)}>
         Your browser can’t play this video. <a href={video.video}>Open the video</a>.
       </video>
+      <button type="button" className="rr-restart rr-d" onClick={() => { const v = ref.current; if (v) { v.currentTime = 0; v.play().catch(() => {}); } }}><Icon name="restart" size={16}/>Restart</button>
       {!started && <button type="button" className="rr-play" onClick={play} aria-label="Play the roof storm damage video"><span><Icon name="play" size={30}/></span></button>}
     </div>
     <figcaption>{caption}</figcaption>
@@ -80,7 +84,7 @@ function EstimateForm({config, preview = false}) {
     </div>
     {field('message', <>Project description <span>(optional)</span></>, <div className="rr-input rr-textarea"><textarea {...common('message')} rows={3} maxLength={1000} placeholder="What are you seeing on your roof?"/></div>)}
     <div className="rr-trap" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={set('website')}/></label></div>
-    {status === 'unavailable' && <p className="rr-alert" role="alert">This demo form isn’t connected to a live inbox yet, so your request was <strong>not</strong> sent. Please call {config.brand.phoneDisplay} instead.</p>}
+    {status === 'unavailable' && <p className="rr-alert" role="alert">This demo form isn’t connected to a live inbox yet, so your request was <strong>not</strong> sent. Summit Peak Roofing is a fictional demo brand.</p>}
     {status === 'failed' && <p className="rr-alert" role="alert">We couldn’t send your request. Nothing was submitted. Check your connection and try again.</p>}
     <button type="submit" className="rr-button rr-submit" disabled={status === 'sending'}>{status === 'sending' ? <><span className="rr-spinner" aria-hidden="true"/>Sending…</> : <><Icon name="send" size={20}/>Request My Free Estimate<Icon name="arrow" size={20}/></>}</button>
     <ul className="rr-assure">{config.assurances.map(a => <li key={a}><Icon name="check" size={16}/>{a}</li>)}</ul>
@@ -119,6 +123,7 @@ export default function LandingPage({config, preview = false}) {
   const video = videos.find(v => v.id === config.videoId);
   const {brand, hero} = config;
   const [stuck, setStuck] = useState(false);
+  const [callNote, setCallNote] = useState(false);
   const [home, setHome] = useState('/');
   const [backLabel, setBackLabel] = useState('Back to ReelFarm');
   useEffect(() => {
@@ -160,18 +165,25 @@ export default function LandingPage({config, preview = false}) {
       }}><Icon name="arrow" size={16}/>{backLabel}</a>
       <a className="rr-brand" href="#top" aria-label={`${brand.name} home`}><span className="rr-mark">{brand.monogram}</span><span><strong>{brand.name}</strong><small>{brand.demo ? 'Demo · Roofing' : brand.tagline}</small></span></a>
       <nav className="rr-nav" aria-label="Page"><a href="#services">Services</a><a href="#how">How it works</a><a href="#estimate">Free estimate</a></nav>
-      <a className="rr-call" href={brand.phoneHref}><Icon name="phone" size={19}/>Call Now</a>
+      <button type="button" className="rr-call" onClick={() => setCallNote(n => !n)} aria-expanded={callNote}><Icon name="phone" size={19}/>Call Now</button>
+      {callNote && <p className="rr-call-note" role="status">Demo only: Summit Peak Roofing is fictional, so there is no phone number to call.</p>}
     </div></header>
     <main id="top">
       <section className="rr-hero rr-wrap">
         <div className="rr-hero-copy">
+          <span className="rr-eyebrow rr-d"><Icon name="shield" size={15}/>Roofing Experts</span>
           <h1>{preview ? <>Roof Repair<br/><em>Estimator</em></> : <>{hero.lead}<br/><em>{hero.accent}</em></>}</h1>
           <p>{hero.copy}</p>
-          <a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a>
+          <div className="rr-cta-row">
+            <a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a>
+            <button type="button" className="rr-ghost rr-d" onClick={() => { const v = document.getElementById('rr-demo-video'); if (!v) return; v.scrollIntoView({behavior: 'smooth', block: 'center'}); v.currentTime = 0; v.muted = false; v.play().catch(() => { v.muted = true; v.play().catch(() => {}); }); }}><Icon name="play" size={16}/>Watch the 78-Second Demo</button>
+          </div>
+          <ul className="rr-feats rr-d"><li><Icon name="bolt" size={26}/>Storm Damage<br/>Assessment</li><li><Icon name="shield" size={26}/>Repair or<br/>Replacement</li><li><Icon name="clock" size={26}/>Fast<br/>Response</li></ul>
         </div>
         {!preview && <Player video={video} caption={config.videoCaption}/>}
       </section>
       <section className="rr-services rr-wrap" id="services" aria-label="Services"><ul>{config.services.map(s => <li key={s.title}><Icon name={s.icon} size={34}/><h2>{s.title}</h2><p>{s.text}</p></li>)}</ul></section>
+      <div className="rr-bottom rr-wrap">
       <section className="rr-estimate rr-wrap" id="estimate" aria-labelledby="estimate-title">
         <div className="rr-card"><h2 id="estimate-title">Get a Free Roof Estimate</h2><p className="rr-sub">Tell us about your project and we’ll be in touch soon.</p><EstimateForm config={config} preview={preview}/></div>
       </section>
@@ -180,6 +192,7 @@ export default function LandingPage({config, preview = false}) {
         <h2 id="how-title">What happens after you reach out</h2>
         <ol>{config.steps.map((s, i) => <li key={s.title}><span>{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>)}</ol>
       </section>
+      </div>
       <section className="rr-final rr-wrap" aria-labelledby="final-title"><h2 id="final-title">Worried about your roof after the storm?</h2><p>Get a free estimate and find out what it needs.</p><a className="rr-button" href="#estimate">{hero.cta}<Icon name="arrow" size={20}/></a></section>
     </main>
     <footer className="rr-footer rr-wrap"><p>{config.demoNotice}</p><p>Demo experience produced by <a href="/">ReelFarm</a></p></footer>

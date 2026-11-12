@@ -182,7 +182,7 @@ function Estimator({locale}) {
   return <section className={'contractor-section section-two wrap'+(locale==='en'?' mob-only':'')} aria-labelledby="estimator-title">
     <div className="section-two-copy"><span className="section-two-badge">VIDEO MARKETING FOR CONTRACTORS</span><h2 id="estimator-title">Turn Your Work<br/>Into <em>Leads.</em></h2><p>We create video ads, a simple landing page, and send real inquiries straight to your email.</p></div>
     <DemoLink locale={locale} className="section-two-image"><img src="/demo/roofing-phone-hand.webp" alt="A person holding a phone showing the Summit Peak Roofing landing page" loading="lazy" width="900" height="985"/></DemoLink>
-    <div className="section-two-bottom"><div ref={benefitsRef} className={'section-two-benefits' + (seq >= 0 ? ' seq' : '')}>{[['video','Video Ads','Get the right people to click.'],['layers','Landing Page','A simple page built to capture inquiries.'],['mail','Email Leads','Estimate requests to your inbox.']].map(([icon,title,desc],i)=><div key={title} className={i===seq?'on':undefined}><Icon name={icon} size={26}/><strong>{title}</strong><span>{desc}</span></div>)}</div><div className="section-two-actions"><DemoLink locale={locale} className="button">See It In Action <Icon name="arrow" size={18}/></DemoLink><a className="button section-two-secondary" href="#trade-title">View Portfolio</a></div></div>
+    <div className="section-two-bottom"><div ref={benefitsRef} className={'section-two-benefits' + (seq >= 0 ? ' seq' : '')}>{[['video','Video Ads','Get the right people to click.'],['layers','Landing Page','A simple page built to capture inquiries.'],['mail','Email Leads','Estimate requests to your inbox.']].map(([icon,title,desc],i)=><div key={title} className={i===seq?'on':undefined}><Icon name={icon} size={26}/><strong>{title}</strong><span>{desc}</span></div>)}</div><div className="section-two-actions"><DemoLink locale={locale} className="button">{({en:'See It In Action',es:'Míralo en acción',pt:'Veja em ação'})[locale]||'See It In Action'} <Icon name="arrow" size={18}/></DemoLink><a className="button section-two-secondary" href="#trade-title">View Portfolio</a></div></div>
   </section>;
 }
 
@@ -224,6 +224,15 @@ function TradePortfolio({copy, locale, t, Preview}) {
     sync(); win.addEventListener('scroll',sync,{passive:true}); window.addEventListener('resize',sync);
     return()=>{win.removeEventListener('scroll',sync);window.removeEventListener('resize',sync);};
   },[desk]);
+  useEffect(() => {
+    if (!desk || !visible || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id=setInterval(()=>{
+      const win=windowRef.current; if(!win||document.hidden||win.matches(':hover')) return;
+      if(win.scrollLeft+win.clientWidth>=win.scrollWidth-4) win.scrollTo({left:0,behavior:'smooth'});
+      else win.scrollBy({left:198,behavior:'smooth'});
+    },2600);
+    return()=>clearInterval(id);
+  },[desk,visible]);
   useEffect(() => {
     if (desk || !visible || paused || navigator.connection?.saveData || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setTimeout(() => { if (!document.hidden) step(1); }, 4500);
