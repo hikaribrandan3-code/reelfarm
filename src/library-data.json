@@ -1,6 +1,6 @@
 {
  "roof-build": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-build.mp4",
+  "video": "/media/library/roof-build.mp4",
   "duration": 118.4,
   "aspectRatio": "9:16",
   "industry": "Roofing",
@@ -8,7 +8,7 @@
   "landingLabel": null
  },
  "roof-storm-uplift": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roof-storm-uplift.mp4",
+  "video": "/media/library/roof-storm-uplift.mp4",
   "duration": 78.3,
   "aspectRatio": "9:16",
   "industry": "Roofing",
@@ -16,7 +16,7 @@
   "landingLabel": "Live Roofing Demo"
  },
  "privacy-fence": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/privacy-fence.mp4",
+  "video": "/media/library/privacy-fence.mp4",
   "duration": 50.9,
   "aspectRatio": "9:16",
   "industry": "Home Services",
@@ -24,7 +24,7 @@
   "landingLabel": null
  },
  "solar-home": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/solar-home.mp4",
+  "video": "/media/library/solar-home.mp4",
   "duration": 64,
   "aspectRatio": "9:16",
   "industry": "Solar",
@@ -32,7 +32,7 @@
   "landingLabel": null
  },
  "ac-not-cooling": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/ac-not-cooling.mp4",
+  "video": "/media/library/ac-not-cooling.mp4",
   "duration": 64.13,
   "aspectRatio": "9:16",
   "industry": "HVAC",
@@ -40,7 +40,7 @@
   "landingLabel": null
  },
  "pool-build": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/pool-build.mp4",
+  "video": "/media/library/pool-build.mp4",
   "duration": 70.8,
   "aspectRatio": "9:16",
   "industry": "Swimming Pools",
@@ -48,7 +48,7 @@
   "landingLabel": null
  },
  "brick-wall": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/brick-wall.mp4",
+  "video": "/media/library/brick-wall.mp4",
   "duration": 70.3,
   "aspectRatio": "9:16",
   "industry": "Masonry",
@@ -56,7 +56,7 @@
   "landingLabel": null
  },
  "hdd-vs-ssd": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/hdd-vs-ssd.mp4",
+  "video": "/media/library/hdd-vs-ssd.mp4",
   "duration": 82.2,
   "aspectRatio": "9:16",
   "industry": "Technology",
@@ -64,7 +64,7 @@
   "landingLabel": null
  },
  "3d-printed-firearms": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/3d-printed-firearms.mp4",
+  "video": "/media/library/3d-printed-firearms.mp4",
   "duration": 82.4,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -72,7 +72,7 @@
   "landingLabel": null
  },
  "grenade-history": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/grenade-history.mp4",
+  "video": "/media/library/grenade-history.mp4",
   "duration": 71.3,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -80,7 +80,7 @@
   "landingLabel": null
  },
  "jesus-tomb": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/jesus-tomb.mp4",
+  "video": "/media/library/jesus-tomb.mp4",
   "duration": 79.23,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -88,7 +88,7 @@
   "landingLabel": null
  },
  "nuclear-bunker": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/nuclear-bunker.mp4",
+  "video": "/media/library/nuclear-bunker.mp4",
   "duration": 93.3,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -96,7 +96,7 @@
   "landingLabel": null
  },
  "occult-manuscripts": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/occult-manuscripts.mp4",
+  "video": "/media/library/occult-manuscripts.mp4",
   "duration": 89.3,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -104,7 +104,7 @@
   "landingLabel": null
  },
  "roman-cross": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/roman-cross.mp4",
+  "video": "/media/library/roman-cross.mp4",
   "duration": 82.2,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -112,7 +112,7 @@
   "landingLabel": null
  },
  "tower-babel": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/tower-babel.mp4",
+  "video": "/media/library/tower-babel.mp4",
   "duration": 93.8,
   "aspectRatio": "9:16",
   "industry": "Other",
@@ -120,7 +120,7 @@
   "landingLabel": null
  },
  "turbocharger": {
-  "video": "https://5iryxk7fr1vnnr7r.public.blob.vercel-storage.com/videos/turbocharger.mp4",
+  "video": "/media/library/turbocharger.mp4",
   "duration": 82.6,
   "aspectRatio": "9:16",
   "industry": "Other",
