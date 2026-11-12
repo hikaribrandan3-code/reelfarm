@@ -1,5 +1,6 @@
 import {roofing} from './demo/roofing.js';
 import ProductionSystem from './ProductionSystem.jsx';
+import {DesktopHero, DesktopFunnel, DesktopProduction, DesktopWork, Swash} from './desktop/DesktopSections.jsx';
 import React, {useEffect, useRef, useState} from 'react';
 import {Icon} from './Icons.jsx';
 import {videos, durationLabel} from './content.js';
@@ -64,20 +65,27 @@ function MorePortfolio({copy,locale,t,VideoCard}) {
     clearTimeout(idleTimer.current);
     idleTimer.current=setTimeout(()=>{if(!hovering.current&&!focused.current)setPaused(false);},1200);
   };
-  const items=[...broaderVideos,...broaderVideos.slice(0,2)];
+  const items=[...broaderVideos,...broaderVideos.slice(0,4)];
+  const [perView,setPerView]=useState(2);
+  useEffect(()=>{const mq=matchMedia('(min-width:1051px)');const sync=()=>setPerView(mq.matches?3:2);sync();mq.addEventListener('change',sync);return()=>mq.removeEventListener('change',sync);},[]);
 
   return <section ref={section} className="contractor-section contractor-more wrap" aria-labelledby="contractor-more-title">
     <Heading id="contractor-more-title" title={copy.more}>{copy.moreText}</Heading>
+    <div className="more-rail">
     <div className="contractor-more-window" ref={windowRef} onPointerEnter={()=>{hovering.current=true;setPaused(true);clearTimeout(idleTimer.current);}} onPointerLeave={()=>{hovering.current=false;resumeWhenIdle();}} onFocusCapture={()=>{focused.current=true;setPaused(true);clearTimeout(idleTimer.current);}} onBlurCapture={event=>{if(!event.currentTarget.contains(event.relatedTarget)){focused.current=false;resumeWhenIdle();}}} onTouchStart={pauseForInteraction} onTouchEnd={resumeWhenIdle}>
       <div ref={trackRef} className="contractor-more-track" style={{transform:`translateX(-${index*stepPx}px)`,transition:beltTransition?undefined:'none'}} onTransitionEnd={event=>{if(event.target!==event.currentTarget||index!==count)return;setBeltTransition(false);setIndex(0);requestAnimationFrame(()=>requestAnimationFrame(()=>setBeltTransition(true)));}}>
         {items.map((video,position)=>{
-          const inView=position===index||position===index+1;
+          const inView=position>=index&&position<index+perView;
           return <div className="contractor-more-slide" key={`${video.id}-${position}`}>
             <VideoCard video={video} animate={visible&&inView} paused={paused} duplicate={position>=count&&!inView}/>
           </div>;
         })}
       </div>
     </div>
+    <button type="button" className="more-arrow more-prev" aria-label={copy.prev} onClick={()=>setIndex(i=>i>0?i-1:count-1)}><Icon name="arrow" size={21}/></button>
+    <button type="button" className="more-arrow more-next" aria-label={copy.next} onClick={()=>setIndex(i=>i+1)}><Icon name="arrow" size={21}/></button>
+    </div>
+    <div className="more-dots">{Array.from({length:count},(_,i)=><button key={i} type="button" aria-label={'Slide '+(i+1)} aria-current={index%count===i} onClick={()=>setIndex(i)}/>)}</div>
     <a className="text-link" href={localPath('/explore',locale)}>{t.seeAll}<Icon name="arrow" size={18}/></a>
   </section>;
 }
@@ -121,7 +129,10 @@ function RoofingAd({copy, locale, compact = false, t}) {
     const video = videoRef.current;
     if (!video || matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.connection?.saveData) return;
     video.muted = true;
-    video.play().catch(() => {});
+    // Play the muted loop only while the ad is on screen, pause it when it scrolls away.
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) video.play().catch(() => {}); else video.pause(); }, {threshold: 0.5});
+    io.observe(video);
+    return () => io.disconnect();
   }, []);
   async function share() {
     const url = new URL(demoPath, location.origin).href;
@@ -141,7 +152,7 @@ function RoofingAd({copy, locale, compact = false, t}) {
     <div className="roofing-ad-media">
       {compact
         ? <DemoLink locale={locale} aria-label={copy.live}><img src={roof.poster} alt="" width="600" height="1067" loading="lazy"/><span className="roofing-ad-play"><Icon name="play" size={21}/></span></DemoLink>
-        : <video ref={videoRef} src={roof.video + "#t=30"} poster={roof.poster} muted loop controls playsInline preload="none" aria-label={roof.title[locale]}/>}
+        : <video ref={videoRef} poster={roof.poster} muted loop controls playsInline preload="none" aria-label={roof.title[locale]}><source src={roof.video + "#t=30"} type="video/mp4"/><source src="/media/roof-build.preview.mp4" type="video/mp4"/></video>}
     </div>
     <div className="roofing-ad-cta">
       <strong>{copy.freeEstimate}</strong>
@@ -157,10 +168,21 @@ function RoofingAd({copy, locale, compact = false, t}) {
 }
 
 function Estimator({locale}) {
-  return <section className="contractor-section section-two wrap" aria-labelledby="estimator-title">
+  // Phones/tablets only: the three benefits light up one after another while the section is on screen.
+  const [seq, setSeq] = useState(-1);
+  const benefitsRef = useRef(null);
+  useEffect(() => {
+    const el = benefitsRef.current; if (!el) return;
+    if (!matchMedia('(max-width:1050px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let t = 0; setSeq(0);
+    const io = new IntersectionObserver(([e]) => { clearInterval(t); if (e.isIntersecting) t = setInterval(() => setSeq(s => (s + 1) % 3), 2400); }, {threshold: 0.5});
+    io.observe(el);
+    return () => { io.disconnect(); clearInterval(t); };
+  }, []);
+  return <section className={'contractor-section section-two wrap'+(locale==='en'?' mob-only':'')} aria-labelledby="estimator-title">
     <div className="section-two-copy"><span className="section-two-badge">VIDEO MARKETING FOR CONTRACTORS</span><h2 id="estimator-title">Turn Your Work<br/>Into <em>Leads.</em></h2><p>We create video ads, a simple landing page, and send real inquiries straight to your email.</p></div>
     <DemoLink locale={locale} className="section-two-image"><img src="/demo/roofing-phone-hand.webp" alt="A person holding a phone showing the Summit Peak Roofing landing page" loading="lazy" width="900" height="985"/></DemoLink>
-    <div className="section-two-bottom"><div className="section-two-benefits">{[['video','Video Ads','Get the right people to click.'],['layers','Landing Page','A simple page built to capture inquiries.'],['mail','Email Leads','Estimate requests to your inbox.']].map(([icon,title,desc])=><div key={title}><Icon name={icon} size={26}/><strong>{title}</strong><span>{desc}</span></div>)}</div><div className="section-two-actions"><DemoLink locale={locale} className="button">See It In Action <Icon name="arrow" size={18}/></DemoLink><a className="button section-two-secondary" href="#trade-title">View Portfolio</a></div></div>
+    <div className="section-two-bottom"><div ref={benefitsRef} className={'section-two-benefits' + (seq >= 0 ? ' seq' : '')}>{[['video','Video Ads','Get the right people to click.'],['layers','Landing Page','A simple page built to capture inquiries.'],['mail','Email Leads','Estimate requests to your inbox.']].map(([icon,title,desc],i)=><div key={title} className={i===seq?'on':undefined}><Icon name={icon} size={26}/><strong>{title}</strong><span>{desc}</span></div>)}</div><div className="section-two-actions"><DemoLink locale={locale} className="button">See It In Action <Icon name="arrow" size={18}/></DemoLink><a className="button section-two-secondary" href="#trade-title">View Portfolio</a></div></div>
   </section>;
 }
 
@@ -174,6 +196,11 @@ function TradePortfolio({copy, locale, t, Preview}) {
   const trackRef = useRef(null);
   const start = useRef(null);
   const [beltOffset,setBeltOffset] = useState(0);
+  const hoverRef = useRef(false), visRef = useRef(false);
+  const [desk,setDesk] = useState(false);
+  const [allMode,setAllMode] = useState(true);
+  const [page,setPage] = useState(0);
+  const [pages,setPages] = useState(1);
   const count = contractorVideos.length;
   const logicalIndex = ((index % count) + count) % count;
   const video = contractorVideos[logicalIndex];
@@ -183,15 +210,39 @@ function TradePortfolio({copy, locale, t, Preview}) {
     return (current + count + offset) % count;
   });
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {threshold:.3});
+    const observer = new IntersectionObserver(([entry]) => { visRef.current = entry.isIntersecting; setVisible(entry.isIntersecting); }, {threshold:.3});
     observer.observe(section.current);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => { const mq=matchMedia('(min-width:1051px)'); const sync=()=>setDesk(mq.matches); sync(); mq.addEventListener('change',sync); return()=>mq.removeEventListener('change',sync); },[]);
+  const scrollToCard = i => { const win=windowRef.current, card=trackRef.current?.children[i+1]; if(win&&card) win.scrollTo({left:card.offsetLeft,behavior:'smooth'}); };
+  const pageBy = dir => { const win=windowRef.current; if(win) win.scrollBy({left:dir*win.clientWidth*.85,behavior:'smooth'}); };
+  useEffect(() => { if(desk&&index>=0&&index<count) scrollToCard(index); },[desk,index]);
   useEffect(() => {
-    if (!visible || paused || navigator.connection?.saveData || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const win=windowRef.current; if(!desk||!win) return;
+    const sync=()=>{ const max=win.scrollWidth-win.clientWidth; const n=Math.max(1,Math.ceil(win.scrollWidth/win.clientWidth)); setPages(n); setPage(max>0?Math.round(win.scrollLeft/max*(n-1)):0); };
+    sync(); win.addEventListener('scroll',sync,{passive:true}); window.addEventListener('resize',sync);
+    return()=>{win.removeEventListener('scroll',sync);window.removeEventListener('resize',sync);};
+  },[desk]);
+  useEffect(() => {
+    if (desk || !visible || paused || navigator.connection?.saveData || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = setTimeout(() => { if (!document.hidden) step(1); }, 4500);
     return () => clearTimeout(timer);
-  }, [visible, paused, index]);
+  }, [desk, visible, paused, index]);
+  // Desktop only: the row glides left on its own, one card at a time, then eases back to the start.
+  useEffect(() => {
+    if (!desk || navigator.connection?.saveData || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer=setInterval(() => {
+      const win=windowRef.current, track=trackRef.current;
+      if (!win || !track || document.hidden || hoverRef.current || !visRef.current) return;
+      const c1=track.children[1], c2=track.children[2]; if(!c1||!c2) return;
+      const cardStep=c2.offsetLeft-c1.offsetLeft;
+      const max=win.scrollWidth-win.clientWidth;
+      if (win.scrollLeft >= max-6) win.scrollTo({left:0,behavior:'smooth'});
+      else win.scrollBy({left:cardStep,behavior:'smooth'});
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [desk]);
   const trade = tradeFor(video);
   useEffect(() => {
     const frame=windowRef.current, track=trackRef.current;
@@ -214,7 +265,7 @@ function TradePortfolio({copy, locale, t, Preview}) {
   useEffect(() => { const row=section.current?.querySelector('.trade-filters'); const selected=row?.querySelector('[aria-pressed="true"]'); if(row && selected) row.scrollTo({left:selected.offsetLeft-row.offsetLeft-(row.clientWidth-selected.clientWidth)/2,behavior:'smooth'}); },[logicalIndex]);
   return <section ref={section} className="contractor-section trade-portfolio wrap" aria-labelledby="trade-title">
     <Heading id="trade-title" label={copy.portfolio} icon="play" title={copy.built} accent={copy.trade}>{locale === 'en' ? 'Roofing, HVAC, concrete, fencing, pools & more. See what we can create for your business.' : copy.portfolioText}</Heading>
-    <div className="trade-slide" onTouchStart={event => {start.current = [event.touches[0].clientX,event.touches[0].clientY];}} onTouchEnd={event => {
+    <div className="trade-slide" onPointerEnter={() => { hoverRef.current = true; if (desk) setPaused(true); }} onPointerLeave={() => { hoverRef.current = false; if (desk) setPaused(false); }} onFocusCapture={() => { hoverRef.current = true; if (desk) setPaused(true); }} onBlurCapture={() => { hoverRef.current = false; if (desk) setPaused(false); }} onTouchStart={event => {start.current = [event.touches[0].clientX,event.touches[0].clientY];}} onTouchEnd={event => {
       if (!start.current) return;
       const dx = event.changedTouches[0].clientX - start.current[0];
       const dy = event.changedTouches[0].clientY - start.current[1];
@@ -228,19 +279,23 @@ function TradePortfolio({copy, locale, t, Preview}) {
         <span className="trade-title"><small>{copy.trades[QUOTE_TRADES.indexOf(tradeFor(item))]}</small><strong>{item.title[locale]}</strong></span>
         <span className="duration">{durationLabel(item.duration)}</span>
       </a>;})}</div></div>
-      <button className="trade-arrow trade-prev" aria-label={copy.prev} onClick={() => step(-1)}><Icon name="arrow" size={21}/></button>
-      <button className="trade-arrow trade-next" aria-label={copy.next} onClick={() => step(1)}><Icon name="arrow" size={21}/></button>
+      <button className="trade-arrow trade-prev" aria-label={copy.prev} onClick={() => desk ? pageBy(-1) : step(-1)}><Icon name="arrow" size={21}/></button>
+      <button className="trade-arrow trade-next" aria-label={copy.next} onClick={() => desk ? pageBy(1) : step(1)}><Icon name="arrow" size={21}/></button>
     </div>
-    <div className="trade-filters">
+    <div className="trade-filters" data-all={allMode}>
+      <button type="button" className="trade-all" aria-pressed={allMode} onClick={() => { setIndex(0); setAllMode(true); scrollToCard(0); }}><Icon name="grid" size={19}/>{({en:'All',es:'Todos',pt:'Todos'})[locale]}</button>
       {QUOTE_TRADES.map((name, i) => {
         const target = contractorVideos.findIndex(item => tradeFor(item) === name);
         if (target < 0) return null;
-        return <button key={name} aria-pressed={name === trade} onClick={() => setIndex(target)}><Icon name={['home','spark','layers','grid','cube','spark','cube','layers','home'][i]} size={19}/>{copy.trades[i]}</button>;
+        return <button key={name} aria-pressed={name === trade} onClick={() => { setIndex(target); setAllMode(false); }}><Icon name={['home','spark','layers','grid','cube','spark','cube','layers','home'][i]} size={19}/>{copy.trades[i]}</button>;
       })}
     </div>
+    <a className="trade-explore desk-only" href={localPath('/explore',locale)}>{t.seeAll}<Icon name="arrow" size={18}/></a>
+    {desk && pages>1 && <div className="trade-dots">{Array.from({length:pages},(_,i)=><button key={i} type="button" aria-label={'Page '+(i+1)} aria-current={page===i} onClick={() => { const win=windowRef.current; if(win) win.scrollTo({left:i*(win.scrollWidth-win.clientWidth)/(pages-1),behavior:'smooth'}); }}/>)}</div>}
   </section>;
 }
 
+const fieldHints = {name:'John Doe',business:'Your Business LLC',phone:'(555) 123-4567',email:'you@email.com'};
 const quoteFields = [
   {key:'name',icon:'user',autoComplete:'name',maxLength:100},
   {key:'business',icon:'home',autoComplete:'organization',maxLength:140},
@@ -249,7 +304,7 @@ const quoteFields = [
   {key:'trade',icon:'layers'},
 ];
 
-function ContractorQuote({copy}) {
+function ContractorQuote({copy,locale}) {
   const [status,setStatus] = useState('idle');
   const [errors,setErrors] = useState({});
   const startedAt = useRef(0);
@@ -280,6 +335,17 @@ function ContractorQuote({copy}) {
     } catch { setStatus('failed'); }
   }
   return <section id="contractor-quote" className="contractor-section contractor-quote wrap" aria-labelledby="contractor-quote-title">
+    {locale==='en' && <div className="dq-left desk-only">
+      <span className="dk-pill">GET A CUSTOM QUOTE</span>
+      <h2 className="dq-title"><span>Turn Your Work</span><span className="dk-green">Into Leads.<Swash w={360}/></span></h2>
+      <p className="dk-sub">Video content that showcases your expertise, builds trust, and helps you get more calls, quotes, and customers.</p>
+      <ul className="dq-points">
+        <li><span className="dk-tile"><Icon name="video" size={26}/></span><strong>Show Your Work</strong><small>Real projects that get attention.</small></li>
+        <li><span className="dk-tile"><Icon name="spark" size={26}/></span><strong>Build Trust</strong><small>Educate, inform, and stand out.</small></li>
+        <li><span className="dk-tile"><Icon name="user" size={26}/></span><strong>Get More Leads</strong><small>Turn views into real customer inquiries.</small></li>
+      </ul>
+    </div>}
+    <div className="dq-card">
     <Heading id="contractor-quote-title" label={copy.contact} icon="mail" title={copy.request} accent={copy.free}>{copy.quoteText}</Heading>
     {status === 'sent' ? <p className="contractor-quote-success" role="status"><Icon name="check"/>{copy.sent}</p> :
       <form className="contractor-form" onSubmit={submit} noValidate aria-busy={status === 'sending'}>
@@ -289,7 +355,7 @@ function ContractorQuote({copy}) {
             <Icon name={icon} size={19}/>
             {key === 'trade'
               ? <select name={key} defaultValue="" required aria-invalid={Boolean(errors[key])}><option value="" disabled>{copy.select}</option>{QUOTE_TRADES.map((name,j) => <option key={name} value={name}>{copy.trades[j]}</option>)}</select>
-              : <input name={key} required aria-invalid={Boolean(errors[key])} {...attributes}/>}
+              : <><input name={key} required placeholder=" " aria-invalid={Boolean(errors[key])} {...attributes}/><span className="field-ph desk-only" aria-hidden="true">{fieldHints[key]}</span></>}
           </span>
         </label>)}
         <label className="contractor-trap" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off"/></label>
@@ -297,6 +363,8 @@ function ContractorQuote({copy}) {
         {status === 'failed' && <p className="contractor-form-error" role="alert">{copy.failed} <a href={'mailto:' + LEAD_EMAIL}>{LEAD_EMAIL}</a></p>}
         <button className="button" type="submit" disabled={status === 'sending'}>{status === 'sending' ? copy.sending : copy.submit}<Icon name="arrow" size={20}/></button>
       </form>}
+    {locale==='en' && <small className="dq-note desk-only">No obligation. We’ll review your request and get back to you shortly.</small>}
+    </div>
   </section>;
 }
 
@@ -335,7 +403,8 @@ function Production({copy}) {
 export default function ContractorHome({locale, t, Preview, VideoCard, FAQ}) {
   const copy = homeCopy[locale];
   return <div className="contractor-home">
-    <section className="contractor-hero wrap" aria-labelledby="contractor-hero-title">
+    {locale==='en' && <DesktopHero/>}
+    <section className={'contractor-hero wrap'+(locale==='en'?' mob-only':'')} aria-labelledby="contractor-hero-title">
       <div className="contractor-hero-copy">
         <ContractorHeroHeading copy={copy} locale={locale} t={t}/>
         <div className="contractor-hero-benefits" aria-label="Why video works">
@@ -350,10 +419,13 @@ export default function ContractorHome({locale, t, Preview, VideoCard, FAQ}) {
       <RoofingAd copy={copy} locale={locale} t={t}/>
     </section>
     <Estimator copy={copy} locale={locale} t={t}/>
+    {locale==='en' && <DesktopFunnel/>}
     <TradePortfolio copy={copy} locale={locale} t={t} Preview={Preview}/>
-    <ContractorQuote copy={copy}/>
-    <ProductionSystem/>
+    <ContractorQuote copy={copy} locale={locale}/>
+    <div className={'ctn'+(locale==='en'?' mob-only':'')}><ProductionSystem/></div>
+    {locale==='en' && <DesktopProduction/>}
     <FAQ items={copy.faq}/>
-    <MorePortfolio copy={copy} locale={locale} t={t} VideoCard={VideoCard}/>
+    {locale==='en' && <DesktopWork/>}
+    <div className={locale==='en'?'mob-only':undefined}><MorePortfolio copy={copy} locale={locale} t={t} VideoCard={VideoCard}/></div>
   </div>;
 }

@@ -136,6 +136,16 @@ export default function LandingPage({config, preview = false}) {
     observer.observe(form); observer.observe(top);
     return () => observer.disconnect();
   }, []);
+  // Desktop only (>= 1051px, no reduced motion): the storm backdrop and video card drift in depth as you scroll.
+  useEffect(() => {
+    if (!matchMedia('(min-width:1051px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches || preview) return;
+    const page = document.querySelector('.rr-page'); if (!page) return;
+    page.classList.add('rr-3d');
+    let raf = 0;
+    const on = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; const y = Math.min(window.scrollY, 900); page.style.setProperty('--rr-s', y); page.style.setProperty('--rr-t', (y / 900).toFixed(3)); }); };
+    window.addEventListener('scroll', on, {passive: true}); on();
+    return () => { window.removeEventListener('scroll', on); page.classList.remove('rr-3d'); if (raf) cancelAnimationFrame(raf); };
+  }, [preview]);
   return <div className={preview ? "rr-page rr-page-preview" : "rr-page"}>
     <picture className="rr-bg" aria-hidden="true"><img src="/demo/storm-1024.webp" srcSet="/demo/storm-640.webp 640w, /demo/storm-1024.webp 1024w" sizes="100vw" width="1024" height="1536" alt="" decoding="async"/></picture>
     <div className="rr-scrim" aria-hidden="true"/>

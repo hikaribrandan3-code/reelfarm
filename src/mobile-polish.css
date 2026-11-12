@@ -1,0 +1,62 @@
+/*
+ * Phone + tablet polish (<= 1050px). Every visual rule here lives inside a max-width:1050px query,
+ * so desktop (>= 1051px) is never affected. Desktop styling stays in desktop/desktop.css.
+ */
+.production-montaj{display:none}
+.mb-steps,.detail-pin{display:none}
+
+@media(max-width:1050px){
+/* spacing: less dead air between the funnel, portfolio and quote sections */
+.contractor-section.section-two{margin-bottom:36px}
+.contractor-section.trade-portfolio{margin-bottom:64px}
+
+/* 2. benefits light up in sequence */
+.section-two-benefits>div{position:relative;transition:opacity .5s ease,transform .5s ease}
+.section-two-benefits>div::after{content:"";display:block;width:0;height:3px;margin:10px auto 0;border-radius:3px;background:#16a34a;transition:width .6s ease}
+.section-two-benefits.seq>div:not(.on){opacity:.55}
+.section-two-benefits>div.on{transform:translateY(-3px)}
+.section-two-benefits>div.on::after{width:46px}
+.section-two-benefits>div.on svg,.section-two-benefits>div.on strong{color:#0a7e16}
+
+/* 4. Montaj card + highlighted Montaj node in the wheel */
+.production-montaj{display:flex;gap:14px;align-items:flex-start;margin:18px 0 6px;padding:18px;text-align:left;border:1px solid #efe6ff;border-radius:20px;background:linear-gradient(135deg,#f6efff,#fff5fb 60%,#fffbea);box-shadow:0 12px 28px #6d4aff14}
+.production-montaj img{flex:none;border-radius:10px}
+.production-montaj strong{display:block;font-size:1.02rem}
+.production-montaj p{margin:6px 0 0;font-size:.88rem;line-height:1.5;color:#3b4553}
+.production-node[title="Montaj"]>div{box-shadow:0 0 0 3px #8b5cf655,0 8px 22px #6d4aff30}
+.production-workflow button[aria-pressed=true]{transition:transform .4s ease}
+}
+
+/* 3. light scroll reveals (no motion for people who prefer less) */
+@media(max-width:1050px) and (prefers-reduced-motion:no-preference){
+html.mb-motion .mb-rv{opacity:0;translate:0 20px;transition:opacity .7s cubic-bezier(.22,1,.36,1) var(--rv-d,0ms),translate .7s cubic-bezier(.22,1,.36,1) var(--rv-d,0ms)}
+html.mb-motion .mb-rv.mb-in{opacity:1;translate:0 0}
+}
+
+/* ---- other pages on phones/tablets: contact steps, video detail, explore ---- */
+@media(max-width:1050px){
+/* contact: replace the empty motion block with a clear what-happens-next stack */
+.contact-motion{display:none}
+.mb-steps{display:block;max-width:440px;margin:34px auto 0;text-align:left}
+.mb-steps ol{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:12px}
+.mb-steps li{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid #e3eee3;border-radius:18px;background:#fff;box-shadow:0 8px 22px #12301a0d}
+.mb-steps b{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:50%;background:#0a7e16;color:#fff;font-size:.9rem}
+.mb-steps strong{display:block;font-size:1rem}
+.mb-steps p{margin:4px 0 0;font-size:.88rem;line-height:1.45;color:#5d6b7a}
+
+/* video detail: poster glow + pinned button */
+.detail-player{isolation:isolate;overflow:visible}
+.detail-player::before{content:"";position:absolute;inset:-5% -7%;z-index:-1;background:var(--poster) center/cover;filter:blur(44px) saturate(1.4);opacity:.45;border-radius:36px}
+.detail-player video{border-radius:24px}
+.detail-pin{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 96px);z-index:40;translate:-50% 14px;display:flex;align-items:center;gap:8px;width:max-content;max-width:calc(100vw - 40px);box-shadow:0 14px 30px #0a7e1640;opacity:0;pointer-events:none;transition:opacity .35s ease,translate .35s ease}
+.detail-pin.is-on{opacity:1;translate:-50% 0;pointer-events:auto}
+
+/* explore: calmer cards, sticky chips, live preview on the card in view */
+.explore-page .card-social-rail,.explore-page .card-sample-views,.explore-page .card-illustrative-label{display:none}
+.explore-page .filter-row{position:sticky;top:76px;z-index:15;margin-inline:-6px;padding:8px 6px;background:#ffffffd9;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.explore-page .preview video.mb-live{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+}
+@media(max-width:1050px) and (prefers-reduced-motion:reduce){
+.detail-pin{transition:none}
+}
+
